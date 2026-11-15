@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "StockTracker v2.0 — DemaQ",
+  "short_name": "StockTracker",
+  "description": "Bilingual (EN/አማርኛ) Daily Sales & Inventory Tracker",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#090d16",
+  "theme_color": "#f59e0b",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
