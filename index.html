@@ -6,18 +6,18 @@
   <meta name="theme-color" content="#0f172a" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="StockTracker v2.0" />
-  <title>StockTracker v2.0 — የዕለት ሽያጭ እና የክምችት መቆጣጠሪያ</title>
+  <meta name="apple-mobile-web-app-title" content="StockTracker" />
+  <title>StockTracker v2.1 — የዕለት ሽያጭ እና የክምችት መቆጣጠሪያ</title>
 
-  <!-- PWA Manifest & Icons (Works on Vercel root & local server) -->
+  <!-- PWA Manifest & Icons -->
   <link rel="manifest" href="/manifest.json" />
   <link rel="icon" type="image/svg+xml" href="/icon.svg" />
   <link rel="apple-touch-icon" href="/icon.svg" />
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS & Lucide Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
   <!-- Google Fonts: Inter, Noto Sans Ethiopic & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,46 +37,26 @@
     }
   </script>
   <style>
-    ::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(15, 23, 42, 0.15);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(100, 116, 139, 0.4);
-      border-radius: 9999px;
-    }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.15); }
+    ::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.4); border-radius: 9999px; }
     input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    input[type="number"] {
-    appearance: textfield;
-    }
-    .tap-highlight-none {
-      -webkit-tap-highlight-color: transparent;
-    }
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+    input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type="number"] { appearance: textfield; }
+    .tap-highlight-none { -webkit-tap-highlight-color: transparent; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body class="bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans min-h-screen flex flex-col selection:bg-amber-500 selection:text-slate-950 transition-colors duration-200 tap-highlight-none">
 
   <!-- ========================================================= -->
-  <!-- 1. TOP NAV BAR (Matches Wireframe Top Zone)               -->
+  <!-- 1. TOP NAV BAR                                            -->
   <!-- ========================================================= -->
   <header class="sticky top-0 z-30 backdrop-blur-xl bg-white/95 dark:bg-slate-900/95 border-b border-slate-200/80 dark:border-slate-800 shadow-sm">
     <div class="max-w-3xl mx-auto px-3 sm:px-5">
       <div class="flex items-center justify-between py-2.5 gap-2">
-        <!-- Graphical SVG Logo + Title -->
+        <!-- Logo + Title -->
         <div class="flex items-center gap-2.5 min-w-0">
           <div class="relative w-10 h-10 rounded-2xl shadow-md shadow-amber-500/15 shrink-0 overflow-hidden border border-amber-500/35 bg-slate-900 flex items-center justify-center">
             <svg viewbox="0 0 64 64" class="w-9 h-9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,14 +76,9 @@
                 </lineargradient>
               </defs>
               <rect width="64" height="64" rx="14" fill="url(#bgGrad)"/>
-              <rect x="10" y="38" width="4" height="14" rx="2" fill="#334155" opacity="0.6"/>
-              <rect x="16" y="30" width="4" height="22" rx="2" fill="#475569" opacity="0.6"/>
               <path d="M25 11H31V16L35 22V50C35 51.6569 33.6569 53 32 53H24C22.3431 53 21 51.6569 21 50V22L25 16V11Z" fill="url(#amberGrad)"/>
               <rect x="25" y="8" width="6" height="3" rx="1" fill="#fef3c7"/>
-              <rect x="23" y="29" width="10" height="11" rx="1.5" fill="#0f172a" opacity="0.85"/>
-              <path d="M25 33H31M25 36.5H29" stroke="#fbbf24" stroke-width="1.6" stroke-linecap="round"/>
               <path d="M38 30H49L47.8 49.5C47.7 51.4 46.1 53 44.2 53H42.8C40.9 53 39.3 51.4 39.2 49.5L38 30Z" fill="#fbbf24" fill-opacity="0.25" stroke="#fbbf24" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M39.2 38H47.8L47.2 49C47.1 50.2 46.1 51 44.9 51H42.1C40.9 51 39.9 50.2 39.8 49L39.2 38Z" fill="url(#amberGrad)"/>
               <circle cx="49" cy="21" r="9" fill="url(#emeraldGrad)" stroke="#0f172a" stroke-width="2.5"/>
               <path d="M45.2 21.2L47.8 23.8L53.2 18.4" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -111,31 +86,16 @@
           <div class="min-w-0">
             <div class="flex items-center gap-1.5">
               <h1 id="uiAppTitle" class="text-sm sm:text-base font-extrabold tracking-tight text-slate-900 dark:text-white truncate">
-                StockTracker v2.0
+                StockTracker
               </h1>
-              <span id="uiFreeBadge" class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
-                FREE
-              </span>
             </div>
-            <p id="uiAppSubtitle" class="text-[11px] text-slate-500 dark:text-slate-400 truncate">
-              Auto-Save • Rollover Engine
-            </p>
+            
           </div>
         </div>
 
-        <!-- Right Nav Controls: PWA Install, Bilingual Toggle, Theme -->
+        <!-- Controls: Install, Bilingual Toggle, Theme -->
         <div class="flex items-center gap-1.5 shrink-0">
-          <button
-            id="pwaInstallBtnTop"
-            onclick="handleInstallClick()"
-            class="flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-600 dark:text-amber-400 border border-amber-500/30 transition-all active:scale-95"
-            title="Install App"
-          >
-            <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
-            <span id="uiInstallBtnText" class="hidden sm:inline">Install</span>
-          </button>
-
-          <!-- Bilingual Switcher (🌐 EN | አማርኛ) -->
+          
           <button
             onclick="toggleLanguage()"
             class="flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 hover:border-amber-500/50 transition-all active:scale-95"
@@ -146,7 +106,6 @@
             <span id="langIndicatorAM" class="px-1.5 py-0.5 rounded text-[10px] text-slate-600 dark:text-slate-300">አማ</span>
           </button>
 
-          <!-- Dark/Light Theme Toggle -->
           <button
             onclick="toggleTheme()"
             class="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
@@ -157,9 +116,7 @@
         </div>
       </div>
 
-      <!-- ========================================================= -->
-      <!-- 2. WIREFRAME 3-BUTTON HUB: [ ALL ] [ Daily Sales ] [ Report ] -->
-      <!-- ========================================================= -->
+      <!-- 3-Button Hub -->
       <div class="grid grid-cols-3 gap-2 pb-3 pt-1">
         <button
           onclick="switchTab('all')"
@@ -192,9 +149,9 @@
   </header>
 
   <!-- ========================================================= -->
-  <!-- 3. CENTER WORKSPACE (Max-W-3XL Mobile-First Container)    -->
+  <!-- 2. CENTER WORKSPACE                                       -->
   <!-- ========================================================= -->
-  <main class="flex-1 max-w-3xl w-full mx-auto px-3 sm:px-5 py-3.5 pb-40 space-y-3.5">
+  <main class="flex-1 max-w-3xl w-full mx-auto px-3 sm:px-5 py-3.5 pb-44 space-y-3.5">
 
     <!-- Toast Notification Banner -->
     <div id="toastBanner" class="hidden fixed top-28 right-4 z-50 max-w-xs sm:max-w-sm bg-slate-900 dark:bg-slate-800 text-white border border-amber-500/40 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-2.5 transition-all">
@@ -204,27 +161,23 @@
       <div class="text-xs font-bold leading-snug" id="toastMessage">Saved</div>
     </div>
 
-    <!-- ======================================================= -->
-    <!-- VIEW 1: [ ALL ] — LIVE INVENTORY SNAPSHOT               -->
-    <!-- ======================================================= -->
+    <!-- VIEW 1: [ ALL ] -->
     <section id="view-all" class="hidden space-y-3">
-      <!-- Live Stock Summary Strip -->
       <div class="grid grid-cols-3 gap-2">
         <div class="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-3 text-center shadow-sm">
           <span id="uiAllTotalItemsLabel" class="text-[10px] font-bold uppercase text-slate-400 block">PRODUCTS</span>
-          <span id="allTotalItemsVal" class="text-lg sm:text-xl font-extrabold font-mono text-slate-900 dark:text-white">23</span>
+          <span id="allTotalItemsVal" class="text-lg sm:text-xl font-extrabold font-mono text-slate-900 dark:text-white">0</span>
         </div>
         <div class="bg-sky-500/10 border border-sky-500/30 rounded-2xl p-3 text-center shadow-sm">
           <span id="uiAllTotalStockLabel" class="text-[10px] font-bold uppercase text-sky-600 dark:text-sky-400 block">CURRENT STOCK</span>
-          <span id="allTotalStockVal" class="text-lg sm:text-xl font-extrabold font-mono text-sky-600 dark:text-sky-400">460</span>
+          <span id="allTotalStockVal" class="text-lg sm:text-xl font-extrabold font-mono text-sky-600 dark:text-sky-400">0</span>
         </div>
         <div class="bg-rose-500/10 border border-rose-500/30 rounded-2xl p-3 text-center shadow-sm">
           <span id="uiAllLowStockLabel" class="text-[10px] font-bold uppercase text-rose-600 dark:text-rose-400 block">LOW / OUT</span>
-          <span id="allLowStockVal" class="text-lg sm:text-xl font-extrabold font-mono text-rose-600 dark:text-rose-400">16</span>
+          <span id="allLowStockVal" class="text-lg sm:text-xl font-extrabold font-mono text-rose-600 dark:text-rose-400">0</span>
         </div>
       </div>
 
-      <!-- Search + Dynamic Category Pills -->
       <div class="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-3 shadow-sm space-y-2.5">
         <div class="relative">
           <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
@@ -236,51 +189,42 @@
             class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-9 pr-8 py-2 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
           />
         </div>
-        <!-- Category Filter Pills -->
-        <div id="allCategoryPills" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
-          <!-- Populated dynamically from user categories -->
-        </div>
+        <div id="allCategoryPills" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5"></div>
       </div>
 
-      <!-- Live Stock Cards List -->
-      <div id="allStockList" class="space-y-2">
-        <!-- Populated by JS -->
-      </div>
+      <div id="allStockList" class="space-y-2"></div>
     </section>
 
-    <!-- ======================================================= -->
-    <!-- VIEW 2: [ Daily Sales ] — INSERT SALES + ADD / REMOVE   -->
-    <!-- ======================================================= -->
+    <!-- VIEW 2: [ Daily Sales ] -->
     <section id="view-daily" class="space-y-3">
-      <!-- Date Bar + Rollover Summary -->
       <div class="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-3 shadow-sm space-y-2.5">
         <div class="flex flex-wrap items-center justify-between gap-2">
-          <!-- Date Stepper & Selector -->
+          <!-- Native Date Picker + Stepper -->
           <div class="flex items-center gap-1.5 flex-1 min-w-[210px]">
-            <button onclick="stepDate(-1)" id="prevDateBtn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 disabled:opacity-35 active:scale-95 transition-all">
+            <button onclick="stepDate(-1)" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition-all">
               <i data-lucide="chevron-left" class="w-4 h-4"></i>
             </button>
 
             <div class="relative flex-1">
-              <select id="dateSelectDropdown" onchange="selectDate(this.value)" class="w-full appearance-none bg-slate-100 dark:bg-slate-800 border border-slate-300/80 dark:border-slate-700 text-slate-900 dark:text-white font-extrabold text-xs sm:text-sm rounded-xl pl-3 pr-8 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer">
-                <!-- Populated by JS -->
-              </select>
-              <i data-lucide="calendar" class="w-3.5 h-3.5 text-amber-500 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+              <input
+                type="date"
+                id="nativeDatePicker"
+                onchange="selectDate(this.value)"
+                class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300/80 dark:border-slate-700 text-slate-900 dark:text-white font-extrabold text-xs sm:text-sm rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
+              />
             </div>
 
-            <button onclick="stepDate(1)" id="nextDateBtn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 disabled:opacity-35 active:scale-95 transition-all">
+            <button onclick="stepDate(1)" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition-all">
               <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </button>
           </div>
 
-          <!-- + Next Day Rollover Button -->
-          <button onclick="addNextDaySheet()" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-extrabold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-sm transition-all active:scale-95 shrink-0">
-            <i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>
-            <span id="addNextDayLabel">+ Next Day</span>
+          <button onclick="jumpToToday()" class="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-extrabold bg-slate-200/80 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 shadow-sm transition-all active:scale-95 shrink-0">
+            <i data-lucide="calendar" class="w-3.5 h-3.5 text-amber-500"></i>
+            <span id="uiTodayBtn">Today</span>
           </button>
         </div>
 
-        <!-- Compact 4-Metric Strip -->
         <div class="grid grid-cols-4 gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800/80 text-center">
           <div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl px-2 py-1.5 border border-slate-200/60 dark:border-slate-800">
             <span id="uiKpiOpeningTitle" class="text-[9px] font-bold uppercase text-slate-400 block truncate">OPEN</span>
@@ -301,10 +245,9 @@
         </div>
       </div>
 
-      <!-- Action Toolbar: [+ Add New Product] [📦 Restock Mode] + Search & Filter Pills -->
+      <!-- Action Toolbar -->
       <div class="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-3 shadow-sm space-y-2.5">
         <div class="flex flex-wrap items-center gap-2">
-          <!-- ➕ Add New Product Button -->
           <button
             onclick="openAddProductModal()"
             class="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all active:scale-95"
@@ -313,7 +256,6 @@
             <span id="uiOpenAddProdBtn">➕ Add Product</span>
           </button>
 
-          <!-- 📦 Restock Mode Toggle -->
           <button
             onclick="toggleRestockMode()"
             id="restockModeBtn"
@@ -323,14 +265,13 @@
             <span id="uiRestockModeLabel">📦 Restock Mode</span>
           </button>
 
-          <!-- Search Input -->
           <div class="relative w-full sm:flex-1">
             <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
             <input
               type="text"
               id="productSearchInput"
               oninput="renderDailyInventory()"
-              placeholder="Search drink (e.g. Gordon, ጎርደንስ)..."
+              placeholder="Search product..."
               class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-8 pr-7 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
             <button onclick="clearSearch()" id="clearSearchBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200">
@@ -339,39 +280,37 @@
           </div>
         </div>
 
-        <!-- Quick Filter Pills -->
         <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
           <button onclick="setDailyFilter('all')" id="filter-all" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap"></button>
-          <button onclick="setDailyFilter('fast')" id="filter-fast" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap"></button>
           <button onclick="setDailyFilter('sold')" id="filter-sold" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap"></button>
           <button onclick="setDailyFilter('low')" id="filter-low" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap"></button>
         </div>
       </div>
 
-      <!-- Daily Sales Product Counter Cards (Insert Sales + Trash Remove Button) -->
-      <div id="counterCardsContainer" class="space-y-2.5">
-        <!-- Populated dynamically by JS -->
-      </div>
+      <div id="counterCardsContainer" class="space-y-2.5"></div>
     </section>
 
-    <!-- ======================================================= -->
-    <!-- VIEW 3: [ Report ] — DAILY, WEEKLY, MONTHLY, ANNUALLY, CUSTOM -->
-    <!-- ======================================================= -->
+    <!-- VIEW 3: [ Report ] -->
     <section id="view-report" class="hidden space-y-3.5">
-      <!-- 5 Timeframe Mode Selector Pills -->
       <div class="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-3 shadow-sm space-y-3">
-        <div class="flex items-center justify-between gap-2">
+        <div class="flex flex-wrap items-center justify-between gap-2">
           <h2 id="uiReportTitle" class="text-sm font-extrabold text-slate-900 dark:text-white flex items-center gap-1.5">
             <i data-lucide="file-bar-chart" class="w-4 h-4 text-amber-500"></i>
             <span>Sales & Stock Report</span>
           </h2>
-          <button onclick="exportReportCSV()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all active:scale-95">
-            <i data-lucide="download" class="w-3.5 h-3.5"></i>
-            <span id="uiExportReportBtn">Export Excel/CSV</span>
-          </button>
+          <div class="flex items-center gap-2">
+            <label class="cursor-pointer flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-amber-500 transition-all">
+              <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+              <span id="uiImportBtnText">Import CSV</span>
+              <input type="file" id="csvFileInput" accept=".csv" class="hidden" onchange="handleCSVImport(event)" />
+            </label>
+            <button onclick="exportReportCSV()" class="flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all active:scale-95">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span id="uiExportReportBtn">Export CSV</span>
+            </button>
+          </div>
         </div>
 
-        <!-- 5 Timeframe Buttons: Daily | Weekly | Monthly | Annually | Custom -->
         <div class="grid grid-cols-5 gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
           <button onclick="setReportMode('daily')" id="rep-mode-daily" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Daily</button>
           <button onclick="setReportMode('weekly')" id="rep-mode-weekly" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Weekly</button>
@@ -380,13 +319,9 @@
           <button onclick="setReportMode('custom')" id="rep-mode-custom" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Custom</button>
         </div>
 
-        <!-- Dynamic Filter Controls for Selected Timeframe -->
-        <div id="reportSubControls" class="pt-1">
-          <!-- Populated dynamically based on reportMode -->
-        </div>
+        <div id="reportSubControls" class="pt-1"></div>
       </div>
 
-      <!-- Report Range Summary KPIs -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-3 shadow-sm">
           <span id="uiRepStartLabel" class="text-[10px] font-bold uppercase text-slate-400 block">OPENING STOCK</span>
@@ -406,30 +341,17 @@
         </div>
       </div>
 
-      <!-- Spreadsheet Formula Audit Toggle (Stolichnaya Oct 04 E38) & Reset Data -->
-      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 shadow-sm flex flex-wrap items-center justify-between gap-2">
-        <div class="flex items-center gap-2 min-w-0">
-          <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 shrink-0"></span>
-          <span id="stoliModeBadge" class="text-xs font-bold text-slate-700 dark:text-slate-300 truncate">
-            Excel Mode (460 End Stock)
-          </span>
-        </div>
-        <div class="flex items-center gap-2">
-          <button onclick="toggleStolichnayaFix()" id="stoliFixBtn" class="px-2.5 py-1.5 rounded-xl text-[11px] font-bold bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30 hover:bg-indigo-500/25 transition-colors">
-            Restore +1 Stolichnaya
-          </button>
-          <button onclick="openResetModal()" class="px-2.5 py-1.5 rounded-xl text-[11px] font-bold bg-rose-500/10 text-rose-500 border border-rose-500/25 hover:bg-rose-500/20 transition-colors">
-            <span id="uiResetBtnLabel">Reset Demo</span>
-          </button>
-        </div>
+      <!-- Data Management Bar -->
+      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-3 shadow-sm flex items-center justify-between">
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-bold" id="uiStorageStatus">Data saved locally</span>
+        <button onclick="openClearDataModal()" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-500 border border-rose-500/25 hover:bg-rose-500/20 transition-colors">
+          <span id="uiClearBtnLabel">Clear All Data</span>
+        </button>
       </div>
 
-      <!-- Per-Product Report Breakdown Table -->
       <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
         <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
-          <h3 id="uiRepBreakdownHeading" class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">
-            Product Breakdown
-          </h3>
+          <h3 id="uiRepBreakdownHeading" class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">Product Breakdown</h3>
           <span id="repDateRangeSubtitle" class="text-[11px] font-mono text-amber-500 font-bold"></span>
         </div>
         <div class="overflow-x-auto">
@@ -443,9 +365,7 @@
                 <th id="uiRepThEnd" class="py-2.5 px-3 text-right">End Stock</th>
               </tr>
             </thead>
-            <tbody id="reportTableBody" class="divide-y divide-slate-200/60 dark:divide-slate-800/70 font-mono">
-              <!-- Populated by JS -->
-            </tbody>
+            <tbody id="reportTableBody" class="divide-y divide-slate-200/60 dark:divide-slate-800/70 font-mono"></tbody>
           </table>
         </div>
       </div>
@@ -454,11 +374,10 @@
   </main>
 
   <!-- ========================================================= -->
-  <!-- 4. BOTTOM WIREFRAME ZONE: OVAL UPGRADE PILL + DemaQ FOOTER -->
+  <!-- 3. BOTTOM WIREFRAME ZONE: OVAL UPGRADE PILL + FOOTER      -->
   <!-- ========================================================= -->
   <div class="fixed bottom-0 inset-x-0 z-30 pointer-events-none">
     <div class="max-w-3xl mx-auto px-4 pb-2 flex flex-col items-center">
-      <!-- Oval Upgrade Pill Button (Matches Wireframe Oval Button) -->
       <button
         onclick="openUpgradeModal()"
         class="pointer-events-auto mb-2 px-8 py-2.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-xs sm:text-sm tracking-wide shadow-xl shadow-amber-500/25 border-2 border-amber-300/80 flex items-center gap-2 transition-all active:scale-95"
@@ -468,7 +387,6 @@
       </button>
     </div>
 
-    <!-- Branded Footer Bar: powered by DemaQ 2026 -->
     <footer class="pointer-events-auto w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-2 text-center">
       <p class="text-[11px] font-extrabold tracking-widest uppercase text-slate-500 dark:text-slate-400">
         powered by <span class="text-amber-500">DemaQ</span> 2026
@@ -477,7 +395,7 @@
   </div>
 
   <!-- ========================================================= -->
-  <!-- MODAL 1: ADD NEW PRODUCT (WITH CATEGORY TEXT BOX!)        -->
+  <!-- MODAL 1: ADD NEW PRODUCT                                  -->
   <!-- ========================================================= -->
   <div id="addProductModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl space-y-4">
@@ -488,7 +406,7 @@
           </div>
           <div>
             <h3 id="uiAddProdHeading" class="text-base font-extrabold text-slate-900 dark:text-white">Add New Product</h3>
-            <p id="uiAddProdSub" class="text-xs text-slate-500 dark:text-slate-400">Added immediately to Daily Sales & ALL</p>
+            <p id="uiAddProdSub" class="text-xs text-slate-500 dark:text-slate-400">Added to your live inventory</p>
           </div>
         </div>
         <button onclick="closeAddProductModal()" class="p-1.5 rounded-xl text-slate-400 hover:text-slate-200">
@@ -505,7 +423,7 @@
             type="text"
             id="newProdName"
             required
-            placeholder="e.g. Hennessy VS"
+            placeholder="e.g. Gordon's Gin"
             class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
           />
         </div>
@@ -517,12 +435,11 @@
           <input
             type="text"
             id="newProdNameAm"
-            placeholder="ለምሳሌ፦ ሄነሲ (Hennessy)"
+            placeholder="ለምሳሌ፦ ጎርደንስ"
             class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
           />
         </div>
 
-        <!-- FREE-TEXT CATEGORY INPUT BOX -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label id="uiLabelCategory" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
@@ -533,20 +450,10 @@
               id="newProdCategory"
               list="categorySuggestions"
               required
-              placeholder="e.g. Whisky, Gin, Wine, Beer..."
+              placeholder="e.g. Spirits, Wine, Beer..."
               class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
-            <datalist id="categorySuggestions">
-              <option value="Whisky"></option>
-              <option value="Vodka"></option>
-              <option value="Gin"></option>
-              <option value="Liqueur"></option>
-              <option value="Wine"></option>
-              <option value="Tequila"></option>
-              <option value="Beer"></option>
-              <option value="Energy"></option>
-              <option value="Soft Drink"></option>
-            </datalist>
+            <datalist id="categorySuggestions"></datalist>
           </div>
 
           <div>
@@ -587,7 +494,7 @@
   </div>
 
   <!-- ========================================================= -->
-  <!-- MODAL 2: REMOVE / DELETE PRODUCT CONFIRMATION             -->
+  <!-- MODAL 2: DELETE CONFIRMATION                              -->
   <!-- ========================================================= -->
   <div id="deleteProductModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-sm w-full p-5 shadow-2xl space-y-4">
@@ -615,7 +522,7 @@
   </div>
 
   <!-- ========================================================= -->
-  <!-- MODAL 3: VERSION 3.0 PRO UPGRADE — "COMING SOON!"         -->
+  <!-- MODAL 3: VERSION 3.0 PRO MODAL                            -->
   <!-- ========================================================= -->
   <div id="upgradeModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 border-2 border-amber-500/50 rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4 relative overflow-hidden">
@@ -632,7 +539,7 @@
               StockTracker v3.0 Pro
             </h3>
             <p id="uiUpgradeModalSub" class="text-xs text-slate-500 dark:text-slate-400">
-              Version 2.0 is 100% Free • v3.0 Paid Edition Coming Soon
+              Version 2.1 is Free • v3.0 Pro Cloud Sync Coming Soon
             </p>
           </div>
         </div>
@@ -643,23 +550,23 @@
 
       <div class="bg-slate-50 dark:bg-slate-800/70 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 space-y-2.5 text-xs">
         <p id="uiUpgradeFeatIntro" class="font-extrabold text-amber-500 uppercase tracking-wider text-[11px]">
-          What's Coming in Version 3.0 (Paid Users):
+          What's Coming in Version 3.0 Pro:
         </p>
         <div class="flex items-center gap-2.5 text-slate-700 dark:text-slate-200">
           <i data-lucide="cloud" class="w-4 h-4 text-emerald-500 shrink-0"></i>
-          <span id="uiUpgradeFeat1">Real-Time Cloud Sync across multiple phones & laptops</span>
+          <span id="uiUpgradeFeat1">Multi-device real-time cloud synchronization</span>
         </div>
         <div class="flex items-center gap-2.5 text-slate-700 dark:text-slate-200">
           <i data-lucide="users" class="w-4 h-4 text-sky-500 shrink-0"></i>
-          <span id="uiUpgradeFeat2">Waiter / Cashier & Owner Role-Based Accounts</span>
+          <span id="uiUpgradeFeat2">Waiter & Manager role-based access</span>
         </div>
         <div class="flex items-center gap-2.5 text-slate-700 dark:text-slate-200">
           <i data-lucide="banknote" class="w-4 h-4 text-amber-500 shrink-0"></i>
-          <span id="uiUpgradeFeat3">Unit Prices, Daily Cash Revenue (ETB) & Profit Margins</span>
+          <span id="uiUpgradeFeat3">Sales revenue tracking & profit calculation</span>
         </div>
         <div class="flex items-center gap-2.5 text-slate-700 dark:text-slate-200">
           <i data-lucide="send" class="w-4 h-4 text-indigo-400 shrink-0"></i>
-          <span id="uiUpgradeFeat4">Automated Daily Closing Alerts via Telegram Bot</span>
+          <span id="uiUpgradeFeat4">Automated end-of-day Telegram notifications</span>
         </div>
       </div>
 
@@ -668,13 +575,13 @@
         id="uiUpgradeCloseBtn"
         class="w-full py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black text-xs sm:text-sm shadow-lg"
       >
-        Got It — Keep Using Free v2.0
+        Got It — Keep Using Free v2.1
       </button>
     </div>
   </div>
 
   <!-- ========================================================= -->
-  <!-- MODAL 4: PWA INSTALL & STANDALONE DOWNLOAD                -->
+  <!-- MODAL 4: PWA INSTALL                                      -->
   <!-- ========================================================= -->
   <div id="pwaModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl space-y-4">
@@ -684,10 +591,10 @@
             PWA • Offline Ready
           </span>
           <h3 id="uiPwaModalTitle" class="text-base font-extrabold text-slate-900 dark:text-white mt-1">
-            Install StockTracker v2.0
+            Install StockTracker
           </h3>
           <p id="uiPwaModalSub" class="text-xs text-slate-500 dark:text-slate-400">
-            Works offline on Android, iPhone & Desktop
+            Works offline on mobile and desktop
           </p>
         </div>
         <button onclick="closePwaModal()" class="p-1.5 rounded-xl text-slate-400 hover:text-slate-200">
@@ -701,56 +608,45 @@
         class="hidden w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-extrabold text-sm shadow-lg flex items-center justify-center gap-2"
       >
         <i data-lucide="download-cloud" class="w-4 h-4"></i>
-        <span>Install App Now (1-Tap)</span>
+        <span>Install App Now</span>
       </button>
 
       <div class="space-y-2 text-xs bg-slate-50 dark:bg-slate-800/60 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800">
         <p><strong id="uiPwaStep1Title">Android (Chrome):</strong> <span id="uiPwaStep1Desc">Tap menu (⋮) and choose "Install app" or "Add to Home screen".</span></p>
         <p><strong id="uiPwaStep2Title">iPhone (Safari):</strong> <span id="uiPwaStep2Desc">Tap Share and choose "Add to Home Screen".</span></p>
       </div>
-
-      <button
-        onclick="downloadStandaloneApp()"
-        class="w-full py-2.5 px-4 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-xs flex items-center justify-center gap-2"
-      >
-        <i data-lucide="file-code" class="w-4 h-4"></i>
-        <span id="uiDownloadStandaloneBtn">Download Standalone App (.html)</span>
-      </button>
     </div>
   </div>
 
   <!-- ========================================================= -->
-  <!-- MODAL 5: RESET DEMO DATA CONFIRMATION                     -->
+  <!-- MODAL 5: CLEAR ALL DATA                                   -->
   <!-- ========================================================= -->
-  <div id="resetModal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
+  <div id="clearDataModal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
-      <h3 id="uiModalResetTitle" class="text-base font-bold text-slate-900 dark:text-white">Reset Demo Data?</h3>
-      <p id="uiModalResetBody" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-        Restores the 23 products and 30 days of historical sales (Oct 03 – Nov 01, 2026) from Dail Copy.xlsx.
+      <h3 id="uiModalClearTitle" class="text-base font-bold text-slate-900 dark:text-white">Clear All Inventory Data?</h3>
+      <p id="uiModalClearBody" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        This action permanently removes all products and historical entries from this device. Please export a CSV backup first.
       </p>
       <div class="flex items-center justify-end gap-2.5 pt-2">
-        <button onclick="closeResetModal()" id="uiModalCancelBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+        <button onclick="closeClearDataModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
           Cancel
         </button>
-        <button onclick="confirmResetData()" id="uiModalConfirmBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white">
-          Reset Demo Data
+        <button onclick="confirmClearData()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white">
+          Yes, Delete Everything
         </button>
       </div>
     </div>
   </div>
 
   <!-- ========================================================= -->
-  <!-- APPLICATION LOGIC & BILINGUAL ENGINE                      -->
+  <!-- JAVASCRIPT LOGIC & ENGINE                                 -->
   <!-- ========================================================= -->
   <script>
-    // ============================================================================
-    // 1. BILINGUAL DICTIONARY (ENGLISH & AMHARIC / አማርኛ)
-    // ============================================================================
     const I18N = {
       en: {
-        appTitle: "StockTracker v2.0",
+        appTitle: "StockTracker v2.1",
         appSubtitle: "Auto-Save • Rollover Engine",
-        freeBadge: "FREE v2.0",
+        freeBadge: "FREE",
         installApp: "Install",
         tabAll: "ALL",
         tabDaily: "Daily Sales",
@@ -759,7 +655,7 @@
         allTotalStockLabel: "CURRENT STOCK",
         allLowStockLabel: "LOW / OUT",
         allSearchPlaceholder: "Search all products or categories...",
-        addNextDay: "+ Next Day",
+        todayBtn: "Today",
         openShort: "Open",
         restockShort: "Restock",
         soldShort: "Sold",
@@ -767,18 +663,17 @@
         openAddProdBtn: "➕ Add Product",
         restockModeOff: "📦 Restock Mode",
         restockModeOn: "📦 Restock: ON",
-        searchPlaceholder: "Search drink (e.g. Gordon, ጎርደንስ)...",
+        searchPlaceholder: "Search product...",
         filterAll: "📦 All",
-        filterFast: "⚡ Fast Movers",
         filterSold: "🔥 Sold Today",
         filterLow: "⚠️ Low Stock",
-        fastMoverBadge: "⚡ Fast",
-        notePlaceholder: "Delivery or shift note...",
+        notePlaceholder: "Restock or shift note...",
         statusInStock: "In Stock",
         statusLowStock: "Low Stock",
         statusOutOfStock: "Out (0)",
         reportTitle: "Sales & Stock Report",
-        exportReportBtn: "Export Excel/CSV",
+        exportReportBtn: "Export CSV",
+        importBtnText: "Import CSV",
         repDaily: "Daily",
         repWeekly: "Weekly",
         repMonthly: "Monthly",
@@ -786,9 +681,6 @@
         repCustom: "Custom",
         fromDateLabel: "From",
         toDateLabel: "To",
-        period1Btn: "★ Period 1 (Oct 03–12)",
-        period2Btn: "★ Period 2 (Oct 13–22)",
-        period3Btn: "★ Period 3 (Oct 23–Nov 01)",
         repStartLabel: "OPENING STOCK",
         repRestockLabel: "RESTOCK (+)",
         repSoldLabel: "TOTAL SOLD (-)",
@@ -799,50 +691,44 @@
         repThRestock: "Restock",
         repThSold: "Sold",
         repThEnd: "End Stock",
-        stoliExactBadge: "Excel Mode (460 End Stock)",
-        stoliFixedBadge: "Fixed Mode (461 End Stock)",
-        stoliRestoreBtn: "Restore +1 Stolichnaya",
-        stoliExactBtn: "Use Excel Total (460)",
-        resetBtnLabel: "Reset Demo",
+        storageStatus: "Saved on device",
+        clearBtnLabel: "Clear All Data",
         upgradePillText: "🚀 Upgrade (v3.0 Pro)",
         comingSoonToast: "🚀 Coming Soon! Version 3.0 Pro (Paid Edition)",
         comingSoonBadge: "COMING SOON!",
         upgradeModalTitle: "StockTracker v3.0 Pro",
-        upgradeModalSub: "Version 2.0 is 100% Free • v3.0 Paid Edition Coming Soon",
-        upgradeFeatIntro: "What's Coming in Version 3.0 (Paid Users):",
-        upgradeFeat1: "Real-Time Cloud Sync across multiple phones & laptops",
-        upgradeFeat2: "Waiter / Cashier & Owner Role-Based Accounts",
-        upgradeFeat3: "Unit Prices, Daily Cash Revenue (ETB) & Profit Margins",
-        upgradeFeat4: "Automated Daily Closing Alerts via Telegram Bot",
-        upgradeCloseBtn: "Got It — Keep Using Free v2.0",
+        upgradeModalSub: "Version 2.1 is 100% Free • v3.0 Cloud Sync Coming Soon",
+        upgradeFeatIntro: "What's Coming in Version 3.0 Pro:",
+        upgradeFeat1: "Multi-device real-time cloud synchronization",
+        upgradeFeat2: "Waiter & Manager role-based access",
+        upgradeFeat3: "Sales revenue tracking & profit calculation",
+        upgradeFeat4: "Automated end-of-day Telegram notifications",
+        upgradeCloseBtn: "Got It — Keep Using Free v2.1",
         addProdHeading: "Add New Product",
-        addProdSub: "Added immediately to Daily Sales & ALL",
+        addProdSub: "Added to your live inventory",
         labelProdNameEn: "Product Name (English) *",
         labelProdNameAm: "የምርት ስም (አማርኛ - Optional)",
         labelCategory: "Category (Text Box) *",
-        categoryPlaceholder: "Type category (e.g. Whisky, Gin, Beer...)",
         labelInitStock: "Opening Stock *",
         cancelBtn: "Cancel",
         saveProdBtn: "Save Product",
         deleteProdTitle: "Remove Product?",
         deleteProdBody: "Are you sure you want to remove this product from your tracker?",
         confirmRemoveBtn: "Remove",
-        pwaModalTitle: "Install StockTracker v2.0",
-        pwaModalSub: "Works offline on Android, iPhone & Desktop",
+        pwaModalTitle: "Install StockTracker",
+        pwaModalSub: "Works offline on mobile and desktop",
         pwaStep1Title: "Android (Chrome):",
         pwaStep1Desc: "Tap menu (⋮) and choose 'Install app' or 'Add to Home screen'.",
         pwaStep2Title: "iPhone (Safari):",
         pwaStep2Desc: "Tap Share and choose 'Add to Home Screen'.",
-        downloadStandaloneBtn: "Download Standalone App (.html)",
-        modalResetTitle: "Reset Demo Data?",
-        modalResetBody: "Restores the 23 products and 30 days of historical sales (Oct 03 – Nov 01, 2026) from Dail Copy.xlsx.",
-        modalConfirmBtn: "Reset Demo Data",
-        noMatchingItems: "No products match your filter."
+        emptyAllHeading: "No Products Added Yet",
+        emptyAllDesc: "Get started by adding your first product or importing a CSV file.",
+        emptyDailyDesc: "No products in your list. Tap '➕ Add Product' to start tracking daily sales."
       },
       am: {
-        appTitle: "የክምችት መቆጣጠሪያ v2.0",
+        appTitle: "የክምችት መቆጣጠሪያ v2.1",
         appSubtitle: "አውቶማቲክ ምዝገባ • ቀላል አጠቃቀም",
-        freeBadge: "ነፃ v2.0",
+        freeBadge: "ነፃ",
         installApp: "ጫን",
         tabAll: "ሁሉም (ALL)",
         tabDaily: "የዕለት ሽያጭ",
@@ -851,7 +737,7 @@
         allTotalStockLabel: "የአሁን ክምችት",
         allLowStockLabel: "አነስተኛ / ያለቀ",
         allSearchPlaceholder: "ምርት ወይም ምድብ ይፈልጉ...",
-        addNextDay: "+ ቀጣይ ቀን",
+        todayBtn: "ዛሬ",
         openShort: "መክፈቻ",
         restockShort: "ተጨማሪ",
         soldShort: "የተሸጠ",
@@ -859,18 +745,17 @@
         openAddProdBtn: "➕ አዲስ ምርት ጨምር",
         restockModeOff: "📦 ተጨማሪ ክምችት",
         restockModeOn: "📦 ተጨማሪ፦ ክፍት",
-        searchPlaceholder: "መጠጥ ይፈልጉ (ለምሳሌ፦ ጎርደንስ)...",
+        searchPlaceholder: "ምርት ይፈልጉ...",
         filterAll: "📦 ሁሉም",
-        filterFast: "⚡ በብዛት የሚሸጡ",
         filterSold: "🔥 ዛሬ የተሸጡ",
         filterLow: "⚠️ አነስተኛ ክምችት",
-        fastMoverBadge: "⚡ ተፈላጊ",
         notePlaceholder: "ማስታወሻ ይጻፉ...",
         statusInStock: "በቂ ክምችት",
         statusLowStock: "አነስተኛ",
         statusOutOfStock: "አልቋል (0)",
         reportTitle: "የሽያጭ እና ክምችት ሪፖርት",
-        exportReportBtn: "ወደ Excel/CSV አውርድ",
+        exportReportBtn: "ወደ CSV አውርድ",
+        importBtnText: "CSV አስገባ",
         repDaily: "የዕለት",
         repWeekly: "ሳምንታዊ",
         repMonthly: "ወርሃዊ",
@@ -878,9 +763,6 @@
         repCustom: "በተመረጠ ቀን",
         fromDateLabel: "ከ",
         toDateLabel: "እስከ",
-        period1Btn: "★ ዙር 1 (Oct 03–12)",
-        period2Btn: "★ ዙር 2 (Oct 13–22)",
-        period3Btn: "★ ዙር 3 (Oct 23–Nov 01)",
         repStartLabel: "የመክፈቻ ክምችት",
         repRestockLabel: "ተጨማሪ ክምችት (+)",
         repSoldLabel: "ጠቅላላ የተሸጠ (-)",
@@ -891,28 +773,24 @@
         repThRestock: "ተጨማሪ",
         repThSold: "የተሸጠ",
         repThEnd: "ቀሪ ክምችት",
-        stoliExactBadge: "የኤክሴል ድምር (460 ቀሪ)",
-        stoliFixedBadge: "የተስተካከለ (461 ቀሪ)",
-        stoliRestoreBtn: "+1 ስቶሊችናያ መልስ",
-        stoliExactBtn: "የኤክሴል ድምር (460)",
-        resetBtnLabel: "ወደ ነበረበት መልስ",
+        storageStatus: "በዚህ ስልክ ላይ ተቀምጧል",
+        clearBtnLabel: "ሁሉንም መረጃ አጥፋ",
         upgradePillText: "🚀 ወደ v3.0 አሻሽል (Upgrade)",
         comingSoonToast: "🚀 በቅርቡ ይጠብቁ! (Coming Soon — Version 3.0 Pro)",
         comingSoonBadge: "በቅርቡ ይጠብቁ! (COMING SOON)",
         upgradeModalTitle: "StockTracker v3.0 Pro",
-        upgradeModalSub: "ቨርዥን 2.0 ሙሉ በሙሉ ነፃ ነው • v3.0 ለክፍያ ተጠቃሚዎች በቅርቡ ይጀምራል",
+        upgradeModalSub: "ቨርዥን 2.1 ሙሉ በሙሉ ነፃ ነው • v3.0 በቅርቡ ይጀምራል",
         upgradeFeatIntro: "በቨርዥን 3.0 የሚካተቱ አዳዲስ አገልግሎቶች፦",
         upgradeFeat1: "በብዙ ስልኮች እና ኮምፒውተሮች ላይ በኢንተርኔት የሚገናኝ (Cloud Sync)",
-        upgradeFeat2: "የአስተናጋጅ፣ የካሸር እና የባለቤት የተለያየ አካውንት",
+        upgradeFeat2: "የአስተናጋጅ እና የባለቤት የተለያየ አካውንት",
         upgradeFeat3: "የመሸጫ ዋጋ፣ የዕለት ገቢ በብር (ETB) እና የትርፍ ስሌት",
-        upgradeFeat4: "በየዕለቱ ማታ በቴሌግራም (Telegram Bot) አውቶማቲክ ሪፖርት",
-        upgradeCloseBtn: "ተረድቻለሁ — ነፃውን v2.0 መጠቀም ቀጥል",
+        upgradeFeat4: "በየዕለቱ ማታ በቴሌግራም አውቶማቲክ ሪፖርት",
+        upgradeCloseBtn: "ተረድቻለሁ — ነፃውን v2.1 መጠቀም ቀጥል",
         addProdHeading: "አዲስ ምርት ጨምር",
-        addProdSub: "ወዲያውኑ ወደ ዕለታዊ ሽያጭ እና ሁሉም ክምችት ይገባል",
+        addProdSub: "ወደ ክምችትዎ ወዲያውኑ ይገባል",
         labelProdNameEn: "የምርት ስም (በእንግሊዝኛ) *",
         labelProdNameAm: "የምርት ስም (በአማርኛ - አማራጭ)",
         labelCategory: "ምድብ (Category Text Box) *",
-        categoryPlaceholder: "ምድብ ይጻፉ (ለምሳሌ፦ ዊስኪ፣ ጂን፣ ወይን...)",
         labelInitStock: "የመክፈቻ ክምችት *",
         cancelBtn: "ተው",
         saveProdBtn: "ምርቱን መዝግብ",
@@ -920,121 +798,43 @@
         deleteProdBody: "ይህን ምርት ከመዝገብዎ ላይ መሰረዝ ይፈልጋሉ?",
         confirmRemoveBtn: "አዎ ሰርዝ",
         pwaModalTitle: "መተግበሪያውን በስልክዎ ይጫኑ",
-        pwaModalSub: "ያለ ኢንተርኔት በአንድሮይድ፣ አይፎን እና ኮምፒውተር ላይ ይሰራል",
+        pwaModalSub: "ያለ ኢንተርኔት በስልክ እና ኮምፒውተር ላይ ይሰራል",
         pwaStep1Title: "አንድሮይድ (Chrome)፦",
         pwaStep1Desc: "የላይኛውን ሜኑ (⋮) ነክተው 'Install app' ወይም 'Add to Home screen' ይምረጡ።",
         pwaStep2Title: "አይፎን (Safari)፦",
         pwaStep2Desc: "Share ምልክቱን ነክተው 'Add to Home Screen' ይምረጡ።",
-        downloadStandaloneBtn: "ሙሉ ፋይሉን አውርድ (.html)",
-        modalResetTitle: "መረጃው ወደ መጀመሪያው ይመለስ?",
-        modalResetBody: "ይህ እርምጃ 23ቱን ምርቶች እና የ30 ቀናት ታሪካዊ መረጃ (Oct 03 – Nov 01, 2026) ወደ ነበረበት ይመልሳል።",
-        modalConfirmBtn: "አዎ መልስ",
-        noMatchingItems: "በተመረጠው ማጣሪያ ምንም ምርት አልተገኘም።"
+        emptyAllHeading: "ምንም የተመዘገበ ምርት የለም",
+        emptyAllDesc: "የመጀመሪያውን ምርት በማስገባት ወይም የCSV ፋይል በማስገባት ይጀምሩ።",
+        emptyDailyDesc: "ምንም ምርት አልተገኘም። በየዕለቱ ለመመዝገብ '➕ አዲስ ምርት ጨምር' የሚለውን ይጫኑ።"
       }
     };
 
-    // ============================================================================
-    // 2. PRE-LOADED `Dail Copy.xlsx` DATASET (23 PRODUCTS & 30 DAYS)
-    // ============================================================================
-    const INITIAL_PRODUCTS = [
-      { id: 'd_black', name: "D. Black", nameAm: "ዲ. ብላክ (D. Black)", category: "Whisky", initialStock: 3, minAlert: 2, fastMover: false },
-      { id: 'red_label', name: "Red Label", nameAm: "ሬድ ሌብል (Red Label)", category: "Whisky", initialStock: 1.5, minAlert: 2, fastMover: true },
-      { id: 'grants', name: "Grant's", nameAm: "ግራንትስ (Grant's)", category: "Whisky", initialStock: 1, minAlert: 2, fastMover: false },
-      { id: 'chivas', name: "Chivas", nameAm: "ቺቫስ (Chivas)", category: "Whisky", initialStock: 1, minAlert: 2, fastMover: false },
-      { id: 'gold_label', name: "Gold Label", nameAm: "ጎልድ ሌብል (Gold Label)", category: "Whisky", initialStock: 2, minAlert: 2, fastMover: false },
-      { id: 'ciroc', name: "Ciroc", nameAm: "ሲሮክ (Ciroc)", category: "Vodka", initialStock: 1, minAlert: 2, fastMover: false },
-      { id: 'grey_goose', name: "Grey Goose", nameAm: "ግሬይ ጉስ (Grey Goose)", category: "Vodka", initialStock: 1, minAlert: 2, fastMover: false },
-      { id: 'jagermeister', name: "Jägermeister", nameAm: "ያገርማይስተር (Jägermeister)", category: "Liqueur", initialStock: 63, minAlert: 10, fastMover: true },
-      { id: 'beefeater', name: "Beefeater", nameAm: "ቢፊተር (Beefeater)", category: "Gin", initialStock: 1, minAlert: 2, fastMover: false },
-      { id: 'smirnoff', name: "Smirnoff", nameAm: "ስሚርኖፍ (Smirnoff)", category: "Vodka", initialStock: 1, minAlert: 2, fastMover: false },
-      { id: 'stolichnaya', name: "Stolichnaya", nameAm: "ስቶሊችናያ (Stolichnaya)", category: "Vodka", initialStock: 1, minAlert: 2, fastMover: false },
-      { id: 'sambuca', name: "Sambuca", nameAm: "ሳምቡካ (Sambuca)", category: "Liqueur", initialStock: 1, minAlert: 2, fastMover: false },
-      { id: 'gordons', name: "Gordon's", nameAm: "ጎርደንስ (Gordon's)", category: "Gin", initialStock: 41, minAlert: 15, fastMover: true },
-      { id: 'jack_daniels', name: "Jack Daniel's", nameAm: "ጃክ ዳንኤልስ (Jack Daniel's)", category: "Whisky", initialStock: 1, minAlert: 2, fastMover: false },
-      { id: 'absolut_vodka', name: "Absolut Vodka", nameAm: "አብሶሉት ቮድካ (Absolut Vodka)", category: "Vodka", initialStock: 3.5, minAlert: 2, fastMover: true },
-      { id: 'black_label', name: "Black Label", nameAm: "ብላክ ሌብል (Black Label)", category: "Whisky", initialStock: 127, minAlert: 15, fastMover: true },
-      { id: 'amarula', name: "Amarula", nameAm: "አማሩላ (Amarula)", category: "Liqueur", initialStock: 72, minAlert: 10, fastMover: true },
-      { id: 'fernet', name: "Fernet", nameAm: "ፈርኔት (Fernet)", category: "Liqueur", initialStock: 12, minAlert: 4, fastMover: true },
-      { id: 'tequila', name: "Tequila", nameAm: "ተኪላ (Tequila)", category: "Tequila", initialStock: 4, minAlert: 4, fastMover: true },
-      { id: 'red_bull', name: "Red Bull", nameAm: "ሬድ ቡል (Red Bull)", category: "Energy", initialStock: 4, minAlert: 6, fastMover: true },
-      { id: 'awash_wine', name: "Awash Wine", nameAm: "አዋሽ ወይን (Awash Wine)", category: "Wine", initialStock: 1, minAlert: 2, fastMover: false },
-      { id: 'acacia_red', name: "Acacia Red", nameAm: "አካሲያ ቀይ ወይን (Acacia Red)", category: "Wine", initialStock: 1, minAlert: 2, fastMover: false },
-      { id: 'rift_valley', name: "Rift Valley Wine", nameAm: "ሪፍት ቫሊ ወይን (Rift Valley Wine)", category: "Wine", initialStock: 1, minAlert: 2, fastMover: false }
-    ];
-
-    const HISTORICAL_SALES = {
-      "2026-10-03": { jagermeister: 1, red_bull: 1 },
-      "2026-10-04": { jagermeister: 2, gordons: 3, black_label: 4, amarula: 3 },
-      "2026-10-05": { jagermeister: 9, gordons: 20, black_label: 1 },
-      "2026-10-06": { jagermeister: 2, gordons: 2 },
-      "2026-10-08": { jagermeister: 2, gordons: 2 },
-      "2026-10-09": { jagermeister: 2, gordons: 3 },
-      "2026-10-11": { jagermeister: 5, gordons: 12, fernet: 7 },
-      "2026-10-12": { jagermeister: 2, black_label: 4 },
-      "2026-10-13": { jagermeister: 4, black_label: 4 },
-      "2026-10-14": { jagermeister: 4 },
-      "2026-10-15": { jagermeister: 1, gordons: 2, amarula: 1 },
-      "2026-10-17": { gordons: 1, tequila: 3 },
-      "2026-10-18": { gordons: 12, red_bull: 1 },
-      "2026-10-19": { jagermeister: 4, gordons: 16 },
-      "2026-10-20": { jagermeister: 1, gordons: 3 },
-      "2026-10-21": { gordons: 1, red_bull: 2 },
-      "2026-10-23": { fernet: 1, red_bull: 1 },
-      "2026-10-25": { gordons: 2, black_label: 20, red_bull: 1 },
-      "2026-10-26": { gordons: 1 },
-      "2026-10-27": { gordons: 2 },
-      "2026-10-28": { jagermeister: 1 },
-      "2026-10-29": { jagermeister: 4 },
-      "2026-10-30": { gordons: 2, black_label: 20, red_bull: 2 },
-      "2026-11-01": { ciroc: 1, gordons: 1, black_label: 8, red_bull: 2 }
-    };
-
-    const HISTORICAL_RESTOCKS = {
-      "2026-10-05": { stolichnaya: -1 },
-      "2026-10-09": {
-        jagermeister: 36,
-        gordons: 243,
-        black_label: 1,
-        tequila: 29,
-        red_bull: 24,
-        awash_wine: -1
-      }
-    };
-
-    const HISTORICAL_NOTES = {
-      "2026-10-05": { stolichnaya: "Excel cell E38 blank formula (-1)" },
-      "2026-10-09": {
-        jagermeister: "Restock delivery (+36)",
-        gordons: "Bulk restock delivery (+243)",
-        black_label: "Stock adjustment (+1)",
-        tequila: "Restock delivery (+29)",
-        red_bull: "Case restock (+24)",
-        awash_wine: "Stock adjustment (-1)"
-      }
-    };
-
-    const STORAGE_KEY = 'demaq_stock_tracker_v2_0';
+    const STORAGE_KEY = 'demaq_stock_tracker_v2_clean';
     let pendingDeleteProductId = null;
+
+    function getTodayString() {
+      const now = new Date();
+      return now.toISOString().slice(0, 10);
+    }
 
     let appState = {
       lang: "en",
       theme: "dark",
       products: [],
-      dates: [],
+      dates: [getTodayString()],
       entries: {},
-      fixStoliBug: false,
-      selectedDate: "2026-11-01",
-      activeTab: "daily",      // 'all' | 'daily' | 'report'
-      dailyFilter: "all",      // 'all' | 'fast' | 'sold' | 'low'
+      selectedDate: getTodayString(),
+      activeTab: "daily",
+      dailyFilter: "all",
       allCatFilter: "ALL",
       restockMode: false,
-      reportMode: "custom",    // 'daily' | 'weekly' | 'monthly' | 'annually' | 'custom'
-      reportDailyDate: "2026-11-01",
+      reportMode: "daily",
+      reportDailyDate: getTodayString(),
       reportWeekIndex: 0,
-      reportMonth: "2026-10",
-      reportYear: "2026",
-      reportCustomFrom: "2026-10-23",
-      reportCustomTo: "2026-11-01"
+      reportMonth: getTodayString().slice(0, 7),
+      reportYear: getTodayString().slice(0, 4),
+      reportCustomFrom: getTodayString(),
+      reportCustomTo: getTodayString()
     };
 
     function t(key) {
@@ -1046,82 +846,48 @@
       return appState.lang === 'am' ? (prod.nameAm || prod.name) : prod.name;
     }
 
-    function generateInitialDates() {
-      const dates = [];
-      const start = new Date("2026-10-03T00:00:00Z");
-      for (let i = 0; i < 30; i++) {
-        const d = new Date(start);
-        d.setUTCDate(start.getUTCDate() + i);
-        dates.push(d.toISOString().slice(0, 10));
-      }
-      return dates;
-    }
-
-    function buildDefaultState(preserveLang, preserveTheme) {
-      const dates = generateInitialDates();
-      const products = JSON.parse(JSON.stringify(INITIAL_PRODUCTS));
-      const entries = {};
-
-      dates.forEach(dateStr => {
-        entries[dateStr] = {};
-        products.forEach(p => {
-          const restock = (HISTORICAL_RESTOCKS[dateStr] && HISTORICAL_RESTOCKS[dateStr][p.id]) || 0;
-          const sales = (HISTORICAL_SALES[dateStr] && HISTORICAL_SALES[dateStr][p.id]) || 0;
-          const note = (HISTORICAL_NOTES[dateStr] && HISTORICAL_NOTES[dateStr][p.id]) || "";
-          entries[dateStr][p.id] = { restock, sales, note };
-        });
-      });
-
-      return {
-        lang: preserveLang || "en",
-        theme: preserveTheme || "dark",
-        products,
-        dates,
-        entries,
-        fixStoliBug: false,
-        selectedDate: "2026-11-01",
-        activeTab: "daily",
-        dailyFilter: "all",
-        allCatFilter: "ALL",
-        restockMode: false,
-        reportMode: "custom",
-        reportDailyDate: "2026-11-01",
-        reportWeekIndex: 0,
-        reportMonth: "2026-10",
-        reportYear: "2026",
-        reportCustomFrom: "2026-10-23",
-        reportCustomTo: "2026-11-01"
-      };
-    }
-
     function loadState() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) {
           const parsed = JSON.parse(raw);
-          if (parsed && Array.isArray(parsed.products) && Array.isArray(parsed.dates)) {
-            appState = { ...buildDefaultState(), ...parsed };
+          if (parsed && Array.isArray(parsed.products)) {
+            appState = { ...appState, ...parsed };
+            if (!appState.dates.includes(appState.selectedDate)) {
+              appState.dates.push(appState.selectedDate);
+              appState.dates.sort();
+            }
             return;
           }
         }
       } catch (e) {
-        console.warn("Using default dataset.", e);
+        console.warn("Storage error", e);
       }
-      appState = buildDefaultState("en", "dark");
       saveState();
     }
 
     function saveState() {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
-      } catch (e) {
-        console.warn("Storage error", e);
-      }
+      } catch (e) {}
     }
 
-    // ============================================================================
-    // 3. AUTOMATIC ROLLOVER ENGINE
-    // ============================================================================
+    function roundNum(n) {
+      return Math.round((Number(n) + Number.EPSILON) * 100) / 100;
+    }
+
+    function formatNum(n) {
+      const val = roundNum(n);
+      return Number.isInteger(val) ? val.toString() : val.toFixed(1).replace(/\.0$/, '');
+    }
+
+    function formatDisplayDate(dateStr) {
+      if (!dateStr) return "";
+      const [y, m, d] = dateStr.split('-').map(Number);
+      const dateObj = new Date(Date.UTC(y, m - 1, d));
+      return dateObj.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC' });
+    }
+
     function computeLedger() {
       const ledger = {};
       const prevClosing = {};
@@ -1130,7 +896,8 @@
         prevClosing[p.id] = Number(p.initialStock) || 0;
       });
 
-      appState.dates.forEach(dateStr => {
+      const sortedDates = [...appState.dates].sort();
+      sortedDates.forEach(dateStr => {
         const dayEntries = appState.entries[dateStr] || {};
         const items = {};
         let totalOpening = 0;
@@ -1163,32 +930,6 @@
       return ledger;
     }
 
-    function roundNum(n) {
-      return Math.round((Number(n) + Number.EPSILON) * 100) / 100;
-    }
-
-    function formatNum(n) {
-      const val = roundNum(n);
-      return Number.isInteger(val) ? val.toString() : val.toFixed(1).replace(/\.0$/, '');
-    }
-
-    function formatDisplayDate(dateStr) {
-      if (!dateStr) return "";
-      const [y, m, d] = dateStr.split('-').map(Number);
-      const dateObj = new Date(Date.UTC(y, m - 1, d));
-      return dateObj.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC' });
-    }
-
-    function formatShortDate(dateStr) {
-      if (!dateStr) return "";
-      const [y, m, d] = dateStr.split('-').map(Number);
-      const dateObj = new Date(Date.UTC(y, m - 1, d));
-      return dateObj.toLocaleDateString('en-US', { month: 'short', day: '2-digit', timeZone: 'UTC' });
-    }
-
-    // ============================================================================
-    // 4. UI TRANSLATION & RENDERING
-    // ============================================================================
     function applyStaticTranslations() {
       document.getElementById('uiAppTitle').textContent = t('appTitle');
       document.getElementById('uiAppSubtitle').textContent = t('appSubtitle');
@@ -1209,13 +950,12 @@
         amEl.className = "px-1 py-0.5 rounded text-[10px] text-slate-500 dark:text-slate-400";
       }
 
-      // ALL Tab
       document.getElementById('uiAllTotalItemsLabel').textContent = t('allTotalItemsLabel');
       document.getElementById('uiAllTotalStockLabel').textContent = t('allTotalStockLabel');
       document.getElementById('uiAllLowStockLabel').textContent = t('allLowStockLabel');
       document.getElementById('allSearchInput').placeholder = t('allSearchPlaceholder');
 
-      // Daily Sales Tab
+      document.getElementById('uiTodayBtn').textContent = t('todayBtn');
       document.getElementById('uiKpiOpeningTitle').textContent = t('openShort');
       document.getElementById('uiKpiRestockTitle').textContent = t('restockShort');
       document.getElementById('uiKpiSalesTitle').textContent = t('soldShort');
@@ -1223,9 +963,9 @@
       document.getElementById('uiOpenAddProdBtn').textContent = t('openAddProdBtn');
       document.getElementById('productSearchInput').placeholder = t('searchPlaceholder');
 
-      // Report Tab
       document.querySelector('#uiReportTitle span').textContent = t('reportTitle');
       document.getElementById('uiExportReportBtn').textContent = t('exportReportBtn');
+      document.getElementById('uiImportBtnText').textContent = t('importBtnText');
       document.getElementById('rep-mode-daily').textContent = t('repDaily');
       document.getElementById('rep-mode-weekly').textContent = t('repWeekly');
       document.getElementById('rep-mode-monthly').textContent = t('repMonthly');
@@ -1236,15 +976,16 @@
       document.getElementById('uiRepRestockLabel').textContent = t('repRestockLabel');
       document.getElementById('uiRepSoldLabel').textContent = t('repSoldLabel');
       document.getElementById('uiRepEndLabel').textContent = t('repEndLabel');
+      document.getElementById('uiStorageStatus').textContent = t('storageStatus');
+      document.getElementById('uiClearBtnLabel').textContent = t('clearBtnLabel');
+
       document.getElementById('uiRepBreakdownHeading').textContent = t('repBreakdownHeading');
       document.getElementById('uiRepThProduct').textContent = t('repThProduct');
       document.getElementById('uiRepThOpen').textContent = t('repThOpen');
       document.getElementById('uiRepThRestock').textContent = t('repThRestock');
       document.getElementById('uiRepThSold').textContent = t('repThSold');
       document.getElementById('uiRepThEnd').textContent = t('repThEnd');
-      document.getElementById('uiResetBtnLabel').textContent = t('resetBtnLabel');
 
-      // Bottom Upgrade Pill & Modal
       document.getElementById('uiUpgradePillText').textContent = t('upgradePillText');
       document.getElementById('uiComingSoonBadge').textContent = t('comingSoonBadge');
       document.getElementById('uiUpgradeModalTitle').textContent = t('upgradeModalTitle');
@@ -1256,13 +997,11 @@
       document.getElementById('uiUpgradeFeat4').textContent = t('upgradeFeat4');
       document.getElementById('uiUpgradeCloseBtn').textContent = t('upgradeCloseBtn');
 
-      // Add / Remove Product Modals
       document.getElementById('uiAddProdHeading').textContent = t('addProdHeading');
       document.getElementById('uiAddProdSub').textContent = t('addProdSub');
       document.getElementById('uiLabelProdNameEn').textContent = t('labelProdNameEn');
       document.getElementById('uiLabelProdNameAm').textContent = t('labelProdNameAm');
       document.getElementById('uiLabelCategory').textContent = t('labelCategory');
-      document.getElementById('newProdCategory').placeholder = t('categoryPlaceholder');
       document.getElementById('uiLabelInitStock').textContent = t('labelInitStock');
       document.getElementById('uiAddProdCancelBtn').textContent = t('cancelBtn');
       document.getElementById('uiAddProdSubmitBtn').textContent = t('saveProdBtn');
@@ -1272,26 +1011,18 @@
       document.getElementById('uiDeleteCancelBtn').textContent = t('cancelBtn');
       document.getElementById('uiDeleteConfirmBtn').textContent = t('confirmRemoveBtn');
 
-      // PWA & Reset Demo Modals
       document.getElementById('uiPwaModalTitle').textContent = t('pwaModalTitle');
       document.getElementById('uiPwaModalSub').textContent = t('pwaModalSub');
       document.getElementById('uiPwaStep1Title').textContent = t('pwaStep1Title');
       document.getElementById('uiPwaStep1Desc').textContent = t('pwaStep1Desc');
       document.getElementById('uiPwaStep2Title').textContent = t('pwaStep2Title');
       document.getElementById('uiPwaStep2Desc').textContent = t('pwaStep2Desc');
-      document.getElementById('uiDownloadStandaloneBtn').textContent = t('downloadStandaloneBtn');
-
-      document.getElementById('uiModalResetTitle').textContent = t('modalResetTitle');
-      document.getElementById('uiModalResetBody').textContent = t('modalResetBody');
-      document.getElementById('uiModalCancelBtn').textContent = t('cancelBtn');
-      document.getElementById('uiModalConfirmBtn').textContent = t('modalConfirmBtn');
     }
 
     function renderAll() {
       applyStaticTranslations();
       const ledger = computeLedger();
 
-      // Update 3-Button Hub Active Styling
       ['all', 'daily', 'report'].forEach(tabKey => {
         const btn = document.getElementById(`tab-${tabKey}`);
         const view = document.getElementById(`view-${tabKey}`);
@@ -1305,43 +1036,35 @@
       });
 
       renderAllTab(ledger);
-      renderDateSelector(ledger);
-      renderDailyKPIs(ledger);
-      renderDailyInventory(ledger);
+      renderDailyTab(ledger);
       renderReportTab(ledger);
 
       if (window.lucide) lucide.createIcons();
     }
 
-    // ============================================================================
-    // 5. RENDER [ ALL ] TAB (Live Stock Overview)
-    // ============================================================================
     function renderAllTab(passedLedger) {
       const ledger = passedLedger || computeLedger();
-      const latestDate = appState.dates[appState.dates.length - 1];
-      const latestData = ledger[latestDate];
-      if (!latestData) return;
+      const latestDate = appState.dates[appState.dates.length - 1] || appState.selectedDate;
+      const latestData = ledger[latestDate] || { items: {}, totals: { closing: 0 } };
 
-      let lowOrOutCount = 0;
+      let lowCount = 0;
       const categoriesSet = new Set(["ALL"]);
       appState.products.forEach(p => {
         if (p.category) categoriesSet.add(p.category.trim());
         const st = latestData.items[p.id]?.closing ?? 0;
-        if (st <= (p.minAlert || 2)) lowOrOutCount++;
+        if (st <= 2) lowCount++;
       });
 
       document.getElementById('allTotalItemsVal').textContent = appState.products.length;
       document.getElementById('allTotalStockVal').textContent = formatNum(latestData.totals.closing);
-      document.getElementById('allLowStockVal').textContent = lowOrOutCount;
+      document.getElementById('allLowStockVal').textContent = lowCount;
 
-      // Update Category Datalist in Add Product Modal
       const datalistEl = document.getElementById('categorySuggestions');
       if (datalistEl) {
         const uniqueCats = Array.from(categoriesSet).filter(c => c !== "ALL");
         datalistEl.innerHTML = uniqueCats.map(c => `<option value="${escapeHtml(c)}"></option>`).join('');
       }
 
-      // Render Dynamic Category Pills
       const pillsEl = document.getElementById('allCategoryPills');
       pillsEl.innerHTML = Array.from(categoriesSet).map(cat => {
         const active = appState.allCatFilter === cat;
@@ -1358,11 +1081,28 @@
         `;
       }).join('');
 
-      const q = (document.getElementById('allSearchInput')?.value || '').trim().toLowerCase();
       const listEl = document.getElementById('allStockList');
       listEl.innerHTML = '';
 
+      if (appState.products.length === 0) {
+        listEl.innerHTML = `
+          <div class="py-12 px-4 text-center bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+              <i data-lucide="package-plus" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-extrabold text-sm sm:text-base text-slate-800 dark:text-slate-100">${escapeHtml(t('emptyAllHeading'))}</h4>
+            <p class="text-xs text-slate-500 max-w-sm mx-auto">${escapeHtml(t('emptyAllDesc'))}</p>
+            <button onclick="openAddProductModal()" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all">
+              ${escapeHtml(t('openAddProdBtn'))}
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      const q = (document.getElementById('allSearchInput')?.value || '').trim().toLowerCase();
       let shown = 0;
+
       appState.products.forEach((p, idx) => {
         const st = latestData.items[p.id]?.closing ?? 0;
         if (appState.allCatFilter !== "ALL" && p.category !== appState.allCatFilter) return;
@@ -1373,7 +1113,7 @@
 
         shown++;
         const isOut = st <= 0;
-        const isLow = !isOut && st <= (p.minAlert || 2);
+        const isLow = !isOut && st <= 2;
 
         let badgeClass = "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30";
         let statusLabel = t('statusInStock');
@@ -1399,7 +1139,7 @@
             <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border ${badgeClass}">
               ${escapeHtml(statusLabel)}
             </span>
-            <span class="min-w-[52px] text-right font-mono text-base font-extrabold text-slate-900 dark:text-white">
+            <span class="min-w-[48px] text-right font-mono text-base font-extrabold text-slate-900 dark:text-white">
               ${formatNum(st)}
             </span>
           </div>
@@ -1408,7 +1148,7 @@
       });
 
       if (shown === 0) {
-        listEl.innerHTML = `<div class="py-10 text-center text-xs text-slate-400 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">${escapeHtml(t('noMatchingItems'))}</div>`;
+        listEl.innerHTML = `<div class="py-10 text-center text-xs text-slate-400 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">No matching products found.</div>`;
       }
     }
 
@@ -1417,48 +1157,20 @@
       renderAllTab();
     }
 
-    // ============================================================================
-    // 6. RENDER [ Daily Sales ] TAB (Insert Sales + Add/Remove Products)
-    // ============================================================================
-    function renderDateSelector(ledger) {
-      const select = document.getElementById('dateSelectDropdown');
-      select.innerHTML = '';
+    function renderDailyTab(passedLedger) {
+      const ledger = passedLedger || computeLedger();
+      const picker = document.getElementById('nativeDatePicker');
+      if (picker) picker.value = appState.selectedDate;
 
-      appState.dates.forEach((d, idx) => {
-        const opt = document.createElement('option');
-        opt.value = d;
-        const daySales = ledger[d]?.totals.sales || 0;
-        const isTenth = (idx + 1) % 10 === 0;
-        const star = isTenth ? ' ★' : '';
-        opt.textContent = `${formatDisplayDate(d)} (${formatNum(daySales)} ${t('soldShort')})${star}`;
-        if (d === appState.selectedDate) opt.selected = true;
-        select.appendChild(opt);
-      });
-
-      const currentIdx = appState.dates.indexOf(appState.selectedDate);
-      document.getElementById('prevDateBtn').disabled = currentIdx <= 0;
-      document.getElementById('nextDateBtn').disabled = currentIdx >= appState.dates.length - 1;
-
-      const lastDateStr = appState.dates[appState.dates.length - 1];
-      const nextDateStr = getNextDateString(lastDateStr);
-      document.getElementById('addNextDayLabel').textContent = `${t('addNextDay')} (${formatShortDate(nextDateStr)})`;
-    }
-
-    function renderDailyKPIs(ledger) {
-      const dayData = ledger[appState.selectedDate];
-      if (!dayData) return;
+      const dayData = ledger[appState.selectedDate] || {
+        items: {},
+        totals: { opening: 0, restock: 0, sales: 0, closing: 0 }
+      };
 
       document.getElementById('kpiOpening').textContent = formatNum(dayData.totals.opening);
-      const r = dayData.totals.restock;
-      document.getElementById('kpiRestock').textContent = r > 0 ? `+${formatNum(r)}` : formatNum(r);
+      document.getElementById('kpiRestock').textContent = dayData.totals.restock > 0 ? `+${formatNum(dayData.totals.restock)}` : formatNum(dayData.totals.restock);
       document.getElementById('kpiSales').textContent = formatNum(dayData.totals.sales);
       document.getElementById('kpiClosing').textContent = formatNum(dayData.totals.closing);
-    }
-
-    function renderDailyInventory(passedLedger) {
-      const ledger = passedLedger || computeLedger();
-      const dayData = ledger[appState.selectedDate];
-      if (!dayData) return;
 
       const restockBtn = document.getElementById('restockModeBtn');
       const restockLabel = document.getElementById('uiRestockModeLabel');
@@ -1470,18 +1182,16 @@
         restockBtn.className = "flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 transition-all";
       }
 
-      let fastCount = 0, soldCount = 0, lowCount = 0;
+      let soldCount = 0, lowCount = 0;
       appState.products.forEach(p => {
         const row = dayData.items[p.id];
         if (!row) return;
-        if (p.fastMover) fastCount++;
         if (row.sales > 0) soldCount++;
-        if (row.closing <= (p.minAlert || 2)) lowCount++;
+        if (row.closing <= 2) lowCount++;
       });
 
       const filters = [
         { id: 'all', label: `${t('filterAll')} (${appState.products.length})` },
-        { id: 'fast', label: `${t('filterFast')} (${fastCount})` },
         { id: 'sold', label: `${t('filterSold')} (${soldCount})` },
         { id: 'low', label: `${t('filterLow')} (${lowCount})` }
       ];
@@ -1497,48 +1207,55 @@
         }
       });
 
+      renderDailyInventory(ledger);
+    }
+
+    function renderDailyInventory(passedLedger) {
+      const ledger = passedLedger || computeLedger();
+      const dayData = ledger[appState.selectedDate] || { items: {} };
+      const cardsContainer = document.getElementById('counterCardsContainer');
+      cardsContainer.innerHTML = '';
+
+      if (appState.products.length === 0) {
+        cardsContainer.innerHTML = `
+          <div class="py-12 px-4 text-center bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+              <i data-lucide="wine" class="w-6 h-6"></i>
+            </div>
+            <p class="text-xs text-slate-500 max-w-sm mx-auto">${escapeHtml(t('emptyDailyDesc'))}</p>
+            <button onclick="openAddProductModal()" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all">
+              ${escapeHtml(t('openAddProdBtn'))}
+            </button>
+          </div>
+        `;
+        return;
+      }
+
       const query = (document.getElementById('productSearchInput')?.value || '').trim().toLowerCase();
       document.getElementById('clearSearchBtn').classList.toggle('hidden', !query);
 
-      const sortedProducts = appState.products.map((p, idx) => ({ ...p, origIndex: idx + 1 }));
-      if (appState.dailyFilter === 'all' || appState.dailyFilter === 'fast') {
-        sortedProducts.sort((a, b) => {
-          const aSold = dayData.items[a.id]?.sales > 0 ? 1 : 0;
-          const bSold = dayData.items[b.id]?.sales > 0 ? 1 : 0;
-          if (aSold !== bSold) return bSold - aSold;
-          const aFast = a.fastMover ? 1 : 0;
-          const bFast = b.fastMover ? 1 : 0;
-          if (aFast !== bFast) return bFast - aFast;
-          return a.origIndex - b.origIndex;
-        });
-      }
-
-      const cardsContainer = document.getElementById('counterCardsContainer');
-      cardsContainer.innerHTML = '';
-      let visibleRows = 0;
-
-      sortedProducts.forEach(p => {
-        const row = dayData.items[p.id];
-        if (!row) return;
-
+      let visible = 0;
+      appState.products.forEach((p, idx) => {
+        const row = dayData.items[p.id] || { opening: 0, restock: 0, sales: 0, closing: 0, note: "" };
         const nameEn = (p.name || '').toLowerCase();
         const nameAm = (p.nameAm || '').toLowerCase();
-        const catEn = (p.category || '').toLowerCase();
+        const cat = (p.category || '').toLowerCase();
 
-        if (query && !nameEn.includes(query) && !nameAm.includes(query) && !catEn.includes(query)) return;
-        if (appState.dailyFilter === 'fast' && !p.fastMover) return;
+        if (query && !nameEn.includes(query) && !nameAm.includes(query) && !cat.includes(query)) return;
         if (appState.dailyFilter === 'sold' && row.sales <= 0) return;
-        if (appState.dailyFilter === 'low' && row.closing > (p.minAlert || 2)) return;
+        if (appState.dailyFilter === 'low' && row.closing > 2) return;
 
-        visibleRows++;
+        visible++;
         const isOut = row.closing <= 0;
-        const isLow = !isOut && row.closing <= (p.minAlert || 2);
+        const isLow = !isOut && row.closing <= 2;
+        const isNegative = row.closing < 0;
         const hasSales = row.sales > 0;
         const showRestockRow = appState.restockMode || row.restock !== 0 || Boolean(row.note);
-        const displayName = getProductDisplayName(p);
 
         let leftBadgeClass = "bg-sky-500/15 text-sky-600 dark:text-sky-400 border-sky-500/30";
-        if (isOut) {
+        if (isNegative) {
+          leftBadgeClass = "bg-rose-600 text-white border-rose-600 animate-pulse";
+        } else if (isOut) {
           leftBadgeClass = "bg-rose-500/20 text-rose-600 dark:text-rose-400 border-rose-500/40";
         } else if (isLow) {
           leftBadgeClass = "bg-amber-500/20 text-amber-600 dark:text-amber-400 border-amber-500/40";
@@ -1553,11 +1270,10 @@
 
         card.innerHTML = `
           <div class="flex items-center justify-between gap-2">
-            <!-- Left Product Info + Remove Trash Button -->
             <div class="min-w-0 flex-1">
               <div class="flex items-center gap-1.5 flex-wrap">
-                <span class="text-[11px] font-mono text-slate-400">#${p.origIndex}</span>
-                <h4 class="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white truncate">${escapeHtml(displayName)}</h4>
+                <span class="text-[11px] font-mono text-slate-400">#${idx + 1}</span>
+                <h4 class="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white truncate">${escapeHtml(getProductDisplayName(p))}</h4>
                 <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">${escapeHtml(p.category || 'General')}</span>
                 <button
                   type="button"
@@ -1569,7 +1285,6 @@
                 </button>
               </div>
 
-              <!-- Stock Flow Strip: Open -> Left -->
               <div class="flex items-center gap-1.5 mt-1.5 flex-wrap text-xs font-mono">
                 <span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
                   ${escapeHtml(t('openShort'))}: <strong>${formatNum(row.opening)}</strong>
@@ -1586,7 +1301,6 @@
               </div>
             </div>
 
-            <!-- Right Sales Controls: [- ] [Sales] [ +1 ] & [+0.5] -->
             <div class="flex flex-col items-end gap-1 shrink-0">
               <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800/90 p-1 rounded-2xl border border-slate-200 dark:border-slate-700">
                 <button
@@ -1620,7 +1334,6 @@
             </div>
           </div>
 
-          <!-- Optional Slide-Open Restock & Notes Drawer -->
           ${showRestockRow ? `
             <div class="mt-2.5 pt-2.5 border-t border-slate-200/70 dark:border-slate-800/80 grid grid-cols-1 sm:grid-cols-2 gap-2">
               <div class="flex items-center gap-2 bg-emerald-500/5 dark:bg-emerald-500/10 px-2.5 py-1.5 rounded-xl border border-emerald-500/25">
@@ -1649,19 +1362,14 @@
         cardsContainer.appendChild(card);
       });
 
-      if (visibleRows === 0) {
-        cardsContainer.innerHTML = `<div class="py-10 text-center text-slate-400 text-xs bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">${escapeHtml(t('noMatchingItems'))}</div>`;
+      if (visible === 0) {
+        cardsContainer.innerHTML = `<div class="py-10 text-center text-slate-400 text-xs bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">No matching products found.</div>`;
       }
-
-      if (window.lucide) lucide.createIcons();
     }
 
-    // ============================================================================
-    // 7. RENDER [ Report ] TAB (Daily, Weekly, Monthly, Annually, Custom Range)
-    // ============================================================================
     function getReportWindowDates() {
-      const allDates = appState.dates;
-      if (!allDates.length) return [];
+      const allDates = [...appState.dates].sort();
+      if (!allDates.length) return [getTodayString()];
 
       if (appState.reportMode === 'daily') {
         const d = allDates.includes(appState.reportDailyDate) ? appState.reportDailyDate : allDates[allDates.length - 1];
@@ -1678,18 +1386,17 @@
       }
 
       if (appState.reportMode === 'monthly') {
-        const m = appState.reportMonth || "2026-10";
+        const m = appState.reportMonth || getTodayString().slice(0, 7);
         const filtered = allDates.filter(d => d.startsWith(m));
         return filtered.length ? filtered : allDates;
       }
 
       if (appState.reportMode === 'annually') {
-        const y = appState.reportYear || "2026";
+        const y = appState.reportYear || getTodayString().slice(0, 4);
         const filtered = allDates.filter(d => d.startsWith(y));
         return filtered.length ? filtered : allDates;
       }
 
-      // Custom Range
       let from = appState.reportCustomFrom || allDates[0];
       let to = appState.reportCustomTo || allDates[allDates.length - 1];
       if (from > to) { const tmp = from; from = to; to = tmp; }
@@ -1699,9 +1406,8 @@
 
     function renderReportTab(passedLedger) {
       const ledger = passedLedger || computeLedger();
-      const allDates = appState.dates;
+      const allDates = [...appState.dates].sort();
 
-      // Highlight Active Timeframe Mode Button
       ['daily', 'weekly', 'monthly', 'annually', 'custom'].forEach(m => {
         const btn = document.getElementById(`rep-mode-${m}`);
         if (appState.reportMode === m) {
@@ -1711,13 +1417,10 @@
         }
       });
 
-      // Render Sub-Controls for Chosen Mode
       const subEl = document.getElementById('reportSubControls');
       if (appState.reportMode === 'daily') {
         subEl.innerHTML = `
-          <select onchange="setReportDailyDate(this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold">
-            ${allDates.map(d => `<option value="${d}" ${d === appState.reportDailyDate ? 'selected' : ''}>${formatDisplayDate(d)}</option>`).join('')}
-          </select>
+          <input type="date" value="${appState.reportDailyDate}" onchange="setReportDailyDate(this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold" />
         `;
       } else if (appState.reportMode === 'weekly') {
         const weeks = [];
@@ -1727,57 +1430,50 @@
         }
         subEl.innerHTML = `
           <select onchange="setReportWeek(this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold">
-            ${weeks.map(w => `<option value="${w.idx}" ${w.idx === appState.reportWeekIndex ? 'selected' : ''}>Week ${w.idx + 1}: ${formatShortDate(w.start)} – ${formatShortDate(w.end)}</option>`).join('')}
+            ${weeks.map(w => `<option value="${w.idx}" ${w.idx === appState.reportWeekIndex ? 'selected' : ''}>Week ${w.idx + 1}: ${formatDisplayDate(w.start)} – ${formatDisplayDate(w.end)}</option>`).join('')}
           </select>
         `;
       } else if (appState.reportMode === 'monthly') {
         const months = Array.from(new Set(allDates.map(d => d.slice(0, 7))));
         subEl.innerHTML = `
-          <div class="flex gap-2">
+          <div class="flex gap-2 flex-wrap">
             ${months.map(m => `
-              <button onclick="setReportMonth('${m}')" class="flex-1 py-2 px-3 rounded-xl text-xs font-extrabold border ${
+              <button onclick="setReportMonth('${m}')" class="px-3 py-1.5 rounded-xl text-xs font-extrabold border ${
                 appState.reportMonth === m
                   ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-transparent'
                   : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
-              }">${m === '2026-10' ? 'October 2026' : m === '2026-11' ? 'November 2026' : m}</button>
+              }">${m}</button>
             `).join('')}
           </div>
         `;
       } else if (appState.reportMode === 'annually') {
+        const years = Array.from(new Set(allDates.map(d => d.slice(0, 4))));
         subEl.innerHTML = `
-          <div class="text-xs font-bold text-slate-500 dark:text-slate-400 px-1">
-            2026 Full Year Summary (${formatShortDate(allDates[0])} – ${formatShortDate(allDates[allDates.length - 1])})
+          <div class="flex gap-2 flex-wrap">
+            ${years.map(y => `
+              <button onclick="setReportYear('${y}')" class="px-3 py-1.5 rounded-xl text-xs font-extrabold border ${
+                appState.reportYear === y
+                  ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-transparent'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
+              }">${y}</button>
+            `).join('')}
           </div>
         `;
       } else {
-        // Custom Range with 10-Day Audit Preset Pills
         subEl.innerHTML = `
-          <div class="space-y-2">
-            <div class="grid grid-cols-2 gap-2">
-              <div>
-                <label class="text-[10px] font-bold uppercase text-slate-400 block mb-0.5">${escapeHtml(t('fromDateLabel'))}</label>
-                <select onchange="setCustomRange('from', this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 text-xs font-bold">
-                  ${allDates.map(d => `<option value="${d}" ${d === appState.reportCustomFrom ? 'selected' : ''}>${formatShortDate(d)}</option>`).join('')}
-                </select>
-              </div>
-              <div>
-                <label class="text-[10px] font-bold uppercase text-slate-400 block mb-0.5">${escapeHtml(t('toDateLabel'))}</label>
-                <select onchange="setCustomRange('to', this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 text-xs font-bold">
-                  ${allDates.map(d => `<option value="${d}" ${d === appState.reportCustomTo ? 'selected' : ''}>${formatShortDate(d)}</option>`).join('')}
-                </select>
-              </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="text-[10px] font-bold uppercase text-slate-400 block mb-0.5">${escapeHtml(t('fromDateLabel'))}</label>
+              <input type="date" value="${appState.reportCustomFrom}" onchange="setCustomRange('from', this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 text-xs font-bold" />
             </div>
-            <!-- 10-Day Spreadsheet Presets -->
-            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-0.5">
-              <button onclick="applyPresetRange('2026-10-03','2026-10-12')" class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 whitespace-nowrap">${escapeHtml(t('period1Btn'))}</button>
-              <button onclick="applyPresetRange('2026-10-13','2026-10-22')" class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 whitespace-nowrap">${escapeHtml(t('period2Btn'))}</button>
-              <button onclick="applyPresetRange('2026-10-23','2026-11-01')" class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 whitespace-nowrap">${escapeHtml(t('period3Btn'))}</button>
+            <div>
+              <label class="text-[10px] font-bold uppercase text-slate-400 block mb-0.5">${escapeHtml(t('toDateLabel'))}</label>
+              <input type="date" value="${appState.reportCustomTo}" onchange="setCustomRange('to', this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 text-xs font-bold" />
             </div>
           </div>
         `;
       }
 
-      // Compute Aggregated Report Data Across Window
       const windowDates = getReportWindowDates();
       const firstDate = windowDates[0];
       const lastDate = windowDates[windowDates.length - 1];
@@ -1816,20 +1512,8 @@
 
       document.getElementById('repDateRangeSubtitle').textContent = firstDate === lastDate
         ? formatDisplayDate(firstDate)
-        : `${formatShortDate(firstDate)} – ${formatShortDate(lastDate)} (${windowDates.length}d)`;
+        : `${formatDisplayDate(firstDate)} – ${formatDisplayDate(lastDate)}`;
 
-      // Stolichnaya Audit Toggle State
-      const stoliBadge = document.getElementById('stoliModeBadge');
-      const stoliBtn = document.getElementById('stoliFixBtn');
-      if (appState.fixStoliBug) {
-        stoliBadge.textContent = t('stoliFixedBadge');
-        stoliBtn.textContent = t('stoliExactBtn');
-      } else {
-        stoliBadge.textContent = t('stoliExactBadge');
-        stoliBtn.textContent = t('stoliRestoreBtn');
-      }
-
-      // Render Product Breakdown Table (Sorted by Sold descending)
       const rowsList = Object.values(prodStats).sort((a, b) => b.sold - a.sold);
       const tbody = document.getElementById('reportTableBody');
       tbody.innerHTML = rowsList.map(item => `
@@ -1852,30 +1536,11 @@
       `).join('');
     }
 
-    function setReportMode(mode) {
-      appState.reportMode = mode;
-      saveState();
-      renderReportTab();
-    }
-
-    function setReportDailyDate(d) {
-      appState.reportDailyDate = d;
-      saveState();
-      renderReportTab();
-    }
-
-    function setReportWeek(idx) {
-      appState.reportWeekIndex = parseInt(idx, 10) || 0;
-      saveState();
-      renderReportTab();
-    }
-
-    function setReportMonth(m) {
-      appState.reportMonth = m;
-      saveState();
-      renderReportTab();
-    }
-
+    function setReportMode(m) { appState.reportMode = m; saveState(); renderReportTab(); }
+    function setReportDailyDate(d) { appState.reportDailyDate = d; saveState(); renderReportTab(); }
+    function setReportWeek(idx) { appState.reportWeekIndex = parseInt(idx, 10) || 0; saveState(); renderReportTab(); }
+    function setReportMonth(m) { appState.reportMonth = m; saveState(); renderReportTab(); }
+    function setReportYear(y) { appState.reportYear = y; saveState(); renderReportTab(); }
     function setCustomRange(side, val) {
       if (side === 'from') appState.reportCustomFrom = val;
       if (side === 'to') appState.reportCustomTo = val;
@@ -1883,114 +1548,75 @@
       renderReportTab();
     }
 
-    function applyPresetRange(from, to) {
-      appState.reportCustomFrom = from;
-      appState.reportCustomTo = to;
-      saveState();
-      renderReportTab();
-    }
-
-    // ============================================================================
-    // 8. ADD PRODUCT (TEXT BOX CATEGORY), REMOVE PRODUCT & UPGRADE HANDLERS
-    // ============================================================================
     function openAddProductModal() {
       document.getElementById('addProductModal').classList.remove('hidden');
       setTimeout(() => document.getElementById('newProdName')?.focus(), 50);
     }
-
-    function closeAddProductModal() {
-      document.getElementById('addProductModal').classList.add('hidden');
-    }
+    function closeAddProductModal() { document.getElementById('addProductModal').classList.add('hidden'); }
 
     function handleAddNewProduct(e) {
       e.preventDefault();
-      const nameInput = document.getElementById('newProdName');
-      const nameAmInput = document.getElementById('newProdNameAm');
-      const catInput = document.getElementById('newProdCategory');
-      const stockInput = document.getElementById('newProdStock');
+      const name = document.getElementById('newProdName').value.trim();
+      const nameAm = document.getElementById('newProdNameAm').value.trim() || name;
+      const category = document.getElementById('newProdCategory').value.trim() || "General";
+      const stock = roundNum(parseFloat(document.getElementById('newProdStock').value) || 0);
 
-      const name = nameInput.value.trim();
-      const category = catInput.value.trim() || "General";
       if (!name) return;
-      const nameAm = nameAmInput.value.trim() || name;
+      const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '_' + Date.now().toString().slice(-4);
 
-      const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '_' + Date.now().toString().slice(-3);
-      const initialStock = roundNum(parseFloat(stockInput.value) || 0);
-
-      appState.products.unshift({
-        id,
-        name,
-        nameAm,
-        category,
-        initialStock,
-        minAlert: 2,
-        fastMover: true
-      });
-
+      appState.products.push({ id, name, nameAm, category, initialStock: stock });
       appState.dates.forEach(d => {
         if (!appState.entries[d]) appState.entries[d] = {};
         appState.entries[d][id] = { restock: 0, sales: 0, note: "" };
       });
 
-      nameInput.value = '';
-      nameAmInput.value = '';
-      catInput.value = '';
-      stockInput.value = '0';
+      document.getElementById('newProdName').value = '';
+      document.getElementById('newProdNameAm').value = '';
+      document.getElementById('newProdCategory').value = '';
+      document.getElementById('newProdStock').value = '0';
 
       closeAddProductModal();
       saveState();
       renderAll();
-      showToast(appState.lang === 'am' ? `${nameAm} ተጨምሯል!` : `Added "${name}" (${category})`);
+      showToast(`Added ${name}`);
     }
 
-    function promptDeleteProduct(productId) {
-      const prod = appState.products.find(p => p.id === productId);
+    function promptDeleteProduct(id) {
+      const prod = appState.products.find(p => p.id === id);
       if (!prod) return;
-      pendingDeleteProductId = productId;
+      pendingDeleteProductId = id;
       document.getElementById('deleteProdTargetName').textContent = getProductDisplayName(prod);
       document.getElementById('deleteProductModal').classList.remove('hidden');
     }
-
     function closeDeleteProductModal() {
       pendingDeleteProductId = null;
       document.getElementById('deleteProductModal').classList.add('hidden');
     }
-
     function confirmDeleteProduct() {
       if (!pendingDeleteProductId) return;
-      const prod = appState.products.find(p => p.id === pendingDeleteProductId);
-      const prodLabel = prod ? getProductDisplayName(prod) : '';
       appState.products = appState.products.filter(p => p.id !== pendingDeleteProductId);
       pendingDeleteProductId = null;
       closeDeleteProductModal();
       saveState();
       renderAll();
-      showToast(appState.lang === 'am' ? `${prodLabel} ተሰርዟል` : `Removed ${prodLabel}`);
+      showToast("Product removed");
     }
 
-    // Version 3.0 Upgrade Button Handler ("Coming Soon")
     function openUpgradeModal() {
       showToast(t('comingSoonToast'));
       document.getElementById('upgradeModal').classList.remove('hidden');
     }
+    function closeUpgradeModal() { document.getElementById('upgradeModal').classList.add('hidden'); }
 
-    function closeUpgradeModal() {
-      document.getElementById('upgradeModal').classList.add('hidden');
-    }
-
-    // ============================================================================
-    // 9. DAILY LOGGING, EXPORT & PWA SERVICE WORKER REGISTRATION
-    // ============================================================================
     function toggleLanguage() {
       appState.lang = appState.lang === 'en' ? 'am' : 'en';
       document.documentElement.lang = appState.lang;
       saveState();
       renderAll();
-      showToast(appState.lang === 'am' ? "ቋንቋ ወደ አማርኛ ተቀይሯል" : "Switched to English");
     }
 
-    function switchTab(tabId) {
-      appState.activeTab = tabId;
+    function switchTab(tab) {
+      appState.activeTab = tab;
       saveState();
       renderAll();
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2008,101 +1634,52 @@
       renderDailyInventory();
     }
 
-    function selectDate(dateStr) {
-      if (appState.dates.includes(dateStr)) {
-        appState.selectedDate = dateStr;
-        saveState();
-        renderAll();
+    function selectDate(d) {
+      if (!d) return;
+      appState.selectedDate = d;
+      if (!appState.dates.includes(d)) {
+        appState.dates.push(d);
+        appState.dates.sort();
       }
+      saveState();
+      renderAll();
     }
 
     function stepDate(delta) {
-      const idx = appState.dates.indexOf(appState.selectedDate);
-      const nextIdx = idx + delta;
-      if (nextIdx >= 0 && nextIdx < appState.dates.length) {
-        appState.selectedDate = appState.dates[nextIdx];
-        saveState();
-        renderAll();
-      }
+      const current = new Date(appState.selectedDate);
+      current.setDate(current.getDate() + delta);
+      selectDate(current.toISOString().slice(0, 10));
     }
 
-    function setDailyFilter(filterId) {
-      appState.dailyFilter = filterId;
+    function jumpToToday() {
+      selectDate(getTodayString());
+    }
+
+    function setDailyFilter(f) {
+      appState.dailyFilter = f;
       renderDailyInventory();
     }
 
-    function updateCell(dateStr, productId, field, rawValue) {
-      if (!appState.entries[dateStr]) appState.entries[dateStr] = {};
-      if (!appState.entries[dateStr][productId]) {
-        appState.entries[dateStr][productId] = { restock: 0, sales: 0, note: "" };
-      }
+    function updateCell(d, pId, field, val) {
+      if (!appState.entries[d]) appState.entries[d] = {};
+      if (!appState.entries[d][pId]) appState.entries[d][pId] = { restock: 0, sales: 0, note: "" };
 
       if (field === 'note') {
-        appState.entries[dateStr][productId].note = String(rawValue || '').trim();
+        appState.entries[d][pId].note = String(val || '').trim();
       } else {
-        const num = parseFloat(rawValue);
-        const cleanVal = isNaN(num) ? 0 : roundNum(num);
-        appState.entries[dateStr][productId][field] = field === 'sales' ? Math.max(0, cleanVal) : cleanVal;
+        const num = parseFloat(val);
+        const clean = isNaN(num) ? 0 : roundNum(num);
+        appState.entries[d][pId][field] = field === 'sales' ? Math.max(0, clean) : clean;
       }
-
       saveState();
       renderAll();
     }
 
-    function stepSales(dateStr, productId, delta) {
-      if (!appState.entries[dateStr]) appState.entries[dateStr] = {};
-      if (!appState.entries[dateStr][productId]) {
-        appState.entries[dateStr][productId] = { restock: 0, sales: 0, note: "" };
-      }
-      const current = Number(appState.entries[dateStr][productId].sales) || 0;
-      const updated = Math.max(0, roundNum(current + delta));
-      appState.entries[dateStr][productId].sales = updated;
-      saveState();
-      renderAll();
-    }
-
-    function getNextDateString(dateStr) {
-      const [y, m, d] = dateStr.split('-').map(Number);
-      const next = new Date(Date.UTC(y, m - 1, d + 1));
-      return next.toISOString().slice(0, 10);
-    }
-
-    function addNextDaySheet() {
-      const lastDate = appState.dates[appState.dates.length - 1];
-      const nextDate = getNextDateString(lastDate);
-
-      if (!appState.dates.includes(nextDate)) {
-        appState.dates.push(nextDate);
-        appState.entries[nextDate] = {};
-        appState.products.forEach(p => {
-          appState.entries[nextDate][p.id] = { restock: 0, sales: 0, note: "" };
-        });
-      }
-
-      appState.selectedDate = nextDate;
-      appState.activeTab = 'daily';
-      saveState();
-      renderAll();
-      showToast(appState.lang === 'am'
-        ? `አዲስ ቀን (${formatDisplayDate(nextDate)}) ተከፍቷል!`
-        : `Created ${formatDisplayDate(nextDate)} with automatic stock rollover!`);
-    }
-
-    function toggleStolichnayaFix() {
-      appState.fixStoliBug = !appState.fixStoliBug;
-      if (!appState.entries["2026-10-05"]) appState.entries["2026-10-05"] = {};
-      if (!appState.entries["2026-10-05"]["stolichnaya"]) {
-        appState.entries["2026-10-05"]["stolichnaya"] = { restock: 0, sales: 0, note: "" };
-      }
-
-      if (appState.fixStoliBug) {
-        appState.entries["2026-10-05"]["stolichnaya"].restock = 0;
-        showToast(t('stoliFixedBadge'));
-      } else {
-        appState.entries["2026-10-05"]["stolichnaya"].restock = -1;
-        showToast(t('stoliExactBadge'));
-      }
-
+    function stepSales(d, pId, delta) {
+      if (!appState.entries[d]) appState.entries[d] = {};
+      if (!appState.entries[d][pId]) appState.entries[d][pId] = { restock: 0, sales: 0, note: "" };
+      const curr = Number(appState.entries[d][pId].sales) || 0;
+      appState.entries[d][pId].sales = Math.max(0, roundNum(curr + delta));
       saveState();
       renderAll();
     }
@@ -2114,9 +1691,9 @@
       const lastDate = windowDates[windowDates.length - 1];
 
       const rows = [
-        ["Report Mode", appState.reportMode.toUpperCase(), "Range", `${firstDate} to ${lastDate}`],
+        ["Report Mode", appState.reportMode.toUpperCase(), "Date Range", `${firstDate} to ${lastDate}`],
         [],
-        [t('repThProduct'), "Category", t('repThOpen'), t('repThRestock'), t('repThSold'), t('repThEnd')]
+        ["Product Name", "Category", "Opening Stock", "Total Restock", "Total Sold", "Ending Stock"]
       ];
 
       appState.products.forEach(p => {
@@ -2135,50 +1712,76 @@
         ]);
       });
 
-      const csvContent = rows.map(r => r.map(c => `"${String(c ?? '').replace(/"/g, '""')}"`).join(',')).join('\n');
-      const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const csv = rows.map(r => r.map(c => `"${String(c ?? '').replace(/"/g, '""')}"`).join(',')).join('\n');
+      const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `DemaQ-Report-${appState.reportMode}-${firstDate}-to-${lastDate}.csv`;
+      a.download = `StockTracker-Report-${firstDate}-to-${lastDate}.csv`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showToast(appState.lang === 'am' ? "የExcel/CSV ሪፖርት ወርዷል!" : "Exported Report CSV!");
+      showToast("Report exported as CSV");
     }
 
-    function openResetModal() { document.getElementById('resetModal').classList.remove('hidden'); }
-    function closeResetModal() { document.getElementById('resetModal').classList.add('hidden'); }
+    function handleCSVImport(event) {
+      const file = event.target.files[0];
+      if (!file) return;
 
-    function confirmResetData() {
-      const currentLang = appState.lang;
-      const currentTheme = appState.theme;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = e.target.result;
+        const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+        let importedCount = 0;
+
+        lines.forEach((line, idx) => {
+          if (idx === 0 && line.toLowerCase().includes("product")) return;
+          const parts = line.split(',').map(s => s.replace(/^"|"$/g, '').trim());
+          if (parts[0]) {
+            const name = parts[0];
+            const category = parts[1] || "General";
+            const initialStock = parseFloat(parts[2]) || 0;
+            const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '_' + Date.now().toString().slice(-4) + Math.floor(Math.random()*100);
+
+            if (!appState.products.some(p => p.name.toLowerCase() === name.toLowerCase())) {
+              appState.products.push({ id, name, nameAm: name, category, initialStock });
+              importedCount++;
+            }
+          }
+        });
+
+        event.target.value = '';
+        saveState();
+        renderAll();
+        showToast(`Imported ${importedCount} products!`);
+      };
+      reader.readAsText(file);
+    }
+
+    function openClearDataModal() { document.getElementById('clearDataModal').classList.remove('hidden'); }
+    function closeClearDataModal() { document.getElementById('clearDataModal').classList.add('hidden'); }
+    function confirmClearData() {
       localStorage.removeItem(STORAGE_KEY);
-      appState = buildDefaultState(currentLang, currentTheme);
+      appState.products = [];
+      appState.dates = [getTodayString()];
+      appState.entries = {};
+      appState.selectedDate = getTodayString();
       saveState();
-      closeResetModal();
+      closeClearDataModal();
       renderAll();
-      showToast(appState.lang === 'am' ? "መረጃው ወደ ነበረበት ተመልሷል!" : "Restored original Dail Copy.xlsx dataset");
+      showToast("Cleared all local data");
     }
 
     function applyTheme() {
-      if (appState.theme === 'light') {
-        document.documentElement.classList.remove('dark');
-      } else {
-        document.documentElement.classList.add('dark');
-      }
+      document.documentElement.classList.toggle('dark', appState.theme !== 'light');
     }
-
     function toggleTheme() {
-      appState.theme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+      appState.theme = appState.theme === 'light' ? 'dark' : 'light';
       applyTheme();
       saveState();
     }
 
-    // ============================================================================
-    // PWA SETUP & SERVICE WORKER REGISTRATION (Works on Vercel & Localhost)
-    // ============================================================================
     let deferredInstallPrompt = null;
     function setupPWA() {
       window.addEventListener('beforeinstallprompt', (e) => {
@@ -2188,17 +1791,9 @@
         document.getElementById('pwaInstallBtnTop')?.classList.add('animate-pulse');
       });
 
-      window.addEventListener('appinstalled', () => {
-        deferredInstallPrompt = null;
-        document.getElementById('pwaInstallBtnTop')?.classList.remove('animate-pulse');
-        showToast(appState.lang === 'am' ? "መተግበሪያው ተጭኗል!" : "App Installed Successfully!");
-      });
-
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then((reg) => console.log('Service Worker registered:', reg.scope))
-            .catch((err) => console.warn('Service Worker registration skipped:', err));
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
         });
       }
     }
@@ -2218,22 +1813,7 @@
       deferredInstallPrompt = null;
       closePwaModal();
     }
-
     function closePwaModal() { document.getElementById('pwaModal').classList.add('hidden'); }
-
-    function downloadStandaloneApp() {
-      const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = "StockTracker-v2.0-DemaQ.html";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      showToast("Downloaded StockTracker-v2.0-DemaQ.html");
-    }
 
     let toastTimer = null;
     function showToast(msg) {
