@@ -42,7 +42,7 @@
     ::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.4); border-radius: 9999px; }
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-    input[type="number"] { appearance: textfield; }
+    input[type="number"] { appearance: textfield; -moz-appearance: textfield; }
     .tap-highlight-none { -webkit-tap-highlight-color: transparent; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -84,19 +84,16 @@
             </svg>
           </div>
           <div class="min-w-0">
-            <div class="flex items-center gap-1.5">
-              <h1 id="uiAppTitle" class="text-sm sm:text-base font-extrabold tracking-tight text-slate-900 dark:text-white truncate">
-                StockTracker
-              </h1>
-            </div>
-            
+            <h1 id="uiAppTitle" class="text-sm sm:text-base font-extrabold tracking-tight text-slate-900 dark:text-white truncate">
+              StockTracker
+            </h1>
           </div>
         </div>
 
-        <!-- Controls: Install, Bilingual Toggle, Theme -->
+        <!-- Controls: Bilingual Toggle, Theme -->
         <div class="flex items-center gap-1.5 shrink-0">
-          
           <button
+            type="button"
             onclick="toggleLanguage()"
             class="flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 hover:border-amber-500/50 transition-all active:scale-95"
             title="Switch Language / ቋንቋ ቀይር"
@@ -107,6 +104,7 @@
           </button>
 
           <button
+            type="button"
             onclick="toggleTheme()"
             class="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
             title="Toggle Theme"
@@ -119,6 +117,7 @@
       <!-- 3-Button Hub -->
       <div class="grid grid-cols-3 gap-2 pb-3 pt-1">
         <button
+          type="button"
           onclick="switchTab('all')"
           id="tab-all"
           class="py-2.5 px-3 rounded-2xl font-extrabold text-xs sm:text-sm border-2 transition-all flex items-center justify-center gap-1.5 active:scale-95"
@@ -128,6 +127,7 @@
         </button>
 
         <button
+          type="button"
           onclick="switchTab('daily')"
           id="tab-daily"
           class="py-2.5 px-3 rounded-2xl font-extrabold text-xs sm:text-sm border-2 transition-all flex items-center justify-center gap-1.5 active:scale-95"
@@ -137,6 +137,7 @@
         </button>
 
         <button
+          type="button"
           onclick="switchTab('report')"
           id="tab-report"
           class="py-2.5 px-3 rounded-2xl font-extrabold text-xs sm:text-sm border-2 transition-all flex items-center justify-center gap-1.5 active:scale-95"
@@ -201,7 +202,7 @@
         <div class="flex flex-wrap items-center justify-between gap-2">
           <!-- Native Date Picker + Stepper -->
           <div class="flex items-center gap-1.5 flex-1 min-w-[210px]">
-            <button onclick="stepDate(-1)" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition-all">
+            <button type="button" onclick="stepDate(-1)" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition-all">
               <i data-lucide="chevron-left" class="w-4 h-4"></i>
             </button>
 
@@ -214,12 +215,12 @@
               />
             </div>
 
-            <button onclick="stepDate(1)" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition-all">
+            <button type="button" onclick="stepDate(1)" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition-all">
               <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </button>
           </div>
 
-          <button onclick="jumpToToday()" class="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-extrabold bg-slate-200/80 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 shadow-sm transition-all active:scale-95 shrink-0">
+          <button type="button" onclick="jumpToToday()" class="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-extrabold bg-slate-200/80 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 shadow-sm transition-all active:scale-95 shrink-0">
             <i data-lucide="calendar" class="w-3.5 h-3.5 text-amber-500"></i>
             <span id="uiTodayBtn">Today</span>
           </button>
@@ -249,6 +250,7 @@
       <div class="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-3 shadow-sm space-y-2.5">
         <div class="flex flex-wrap items-center gap-2">
           <button
+            type="button"
             onclick="openAddProductModal()"
             class="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all active:scale-95"
           >
@@ -257,6 +259,7 @@
           </button>
 
           <button
+            type="button"
             onclick="toggleRestockMode()"
             id="restockModeBtn"
             class="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border transition-all active:scale-95"
@@ -274,16 +277,16 @@
               placeholder="Search product..."
               class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-8 pr-7 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
-            <button onclick="clearSearch()" id="clearSearchBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200">
+            <button type="button" onclick="clearSearch()" id="clearSearchBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200">
               <i data-lucide="x" class="w-3.5 h-3.5"></i>
             </button>
           </div>
         </div>
 
         <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
-          <button onclick="setDailyFilter('all')" id="filter-all" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap"></button>
-          <button onclick="setDailyFilter('sold')" id="filter-sold" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap"></button>
-          <button onclick="setDailyFilter('low')" id="filter-low" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap"></button>
+          <button type="button" onclick="setDailyFilter('all')" id="filter-all" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap"></button>
+          <button type="button" onclick="setDailyFilter('sold')" id="filter-sold" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap"></button>
+          <button type="button" onclick="setDailyFilter('low')" id="filter-low" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap"></button>
         </div>
       </div>
 
@@ -304,7 +307,7 @@
               <span id="uiImportBtnText">Import CSV</span>
               <input type="file" id="csvFileInput" accept=".csv" class="hidden" onchange="handleCSVImport(event)" />
             </label>
-            <button onclick="exportReportCSV()" class="flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all active:scale-95">
+            <button type="button" onclick="exportReportCSV()" class="flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all active:scale-95">
               <i data-lucide="download" class="w-3.5 h-3.5"></i>
               <span id="uiExportReportBtn">Export CSV</span>
             </button>
@@ -312,11 +315,11 @@
         </div>
 
         <div class="grid grid-cols-5 gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
-          <button onclick="setReportMode('daily')" id="rep-mode-daily" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Daily</button>
-          <button onclick="setReportMode('weekly')" id="rep-mode-weekly" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Weekly</button>
-          <button onclick="setReportMode('monthly')" id="rep-mode-monthly" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Monthly</button>
-          <button onclick="setReportMode('annually')" id="rep-mode-annually" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Annually</button>
-          <button onclick="setReportMode('custom')" id="rep-mode-custom" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Custom</button>
+          <button type="button" onclick="setReportMode('daily')" id="rep-mode-daily" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Daily</button>
+          <button type="button" onclick="setReportMode('weekly')" id="rep-mode-weekly" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Weekly</button>
+          <button type="button" onclick="setReportMode('monthly')" id="rep-mode-monthly" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Monthly</button>
+          <button type="button" onclick="setReportMode('annually')" id="rep-mode-annually" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Annually</button>
+          <button type="button" onclick="setReportMode('custom')" id="rep-mode-custom" class="py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate">Custom</button>
         </div>
 
         <div id="reportSubControls" class="pt-1"></div>
@@ -343,8 +346,8 @@
 
       <!-- Data Management Bar -->
       <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-3 shadow-sm flex items-center justify-between">
-        <span class="text-xs text-slate-500 dark:text-slate-400 font-bold" id="uiStorageStatus">Data saved locally</span>
-        <button onclick="openClearDataModal()" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-500 border border-rose-500/25 hover:bg-rose-500/20 transition-colors">
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-bold" id="uiStorageStatus">Saved on device</span>
+        <button type="button" onclick="openClearDataModal()" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-500 border border-rose-500/25 hover:bg-rose-500/20 transition-colors">
           <span id="uiClearBtnLabel">Clear All Data</span>
         </button>
       </div>
@@ -379,6 +382,7 @@
   <div class="fixed bottom-0 inset-x-0 z-30 pointer-events-none">
     <div class="max-w-3xl mx-auto px-4 pb-2 flex flex-col items-center">
       <button
+        type="button"
         onclick="openUpgradeModal()"
         class="pointer-events-auto mb-2 px-8 py-2.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-xs sm:text-sm tracking-wide shadow-xl shadow-amber-500/25 border-2 border-amber-300/80 flex items-center gap-2 transition-all active:scale-95"
       >
@@ -409,7 +413,7 @@
             <p id="uiAddProdSub" class="text-xs text-slate-500 dark:text-slate-400">Added to your live inventory</p>
           </div>
         </div>
-        <button onclick="closeAddProductModal()" class="p-1.5 rounded-xl text-slate-400 hover:text-slate-200">
+        <button type="button" onclick="closeAddProductModal()" class="p-1.5 rounded-xl text-slate-400 hover:text-slate-200">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
@@ -511,10 +515,10 @@
         Are you sure you want to remove this product from your tracker?
       </p>
       <div class="flex items-center justify-end gap-2 pt-1">
-        <button onclick="closeDeleteProductModal()" id="uiDeleteCancelBtn" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+        <button type="button" onclick="closeDeleteProductModal()" id="uiDeleteCancelBtn" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
           Cancel
         </button>
-        <button onclick="confirmDeleteProduct()" id="uiDeleteConfirmBtn" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-rose-600 hover:bg-rose-500 text-white">
+        <button type="button" onclick="confirmDeleteProduct()" id="uiDeleteConfirmBtn" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-rose-600 hover:bg-rose-500 text-white">
           Remove
         </button>
       </div>
@@ -543,7 +547,7 @@
             </p>
           </div>
         </div>
-        <button onclick="closeUpgradeModal()" class="p-1.5 rounded-xl text-slate-400 hover:text-slate-200">
+        <button type="button" onclick="closeUpgradeModal()" class="p-1.5 rounded-xl text-slate-400 hover:text-slate-200">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
@@ -571,6 +575,7 @@
       </div>
 
       <button
+        type="button"
         onclick="closeUpgradeModal()"
         id="uiUpgradeCloseBtn"
         class="w-full py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black text-xs sm:text-sm shadow-lg"
@@ -581,45 +586,7 @@
   </div>
 
   <!-- ========================================================= -->
-  <!-- MODAL 4: PWA INSTALL                                      -->
-  <!-- ========================================================= -->
-  <div id="pwaModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl space-y-4">
-      <div class="flex items-start justify-between gap-3">
-        <div>
-          <span class="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">
-            PWA • Offline Ready
-          </span>
-          <h3 id="uiPwaModalTitle" class="text-base font-extrabold text-slate-900 dark:text-white mt-1">
-            Install StockTracker
-          </h3>
-          <p id="uiPwaModalSub" class="text-xs text-slate-500 dark:text-slate-400">
-            Works offline on mobile and desktop
-          </p>
-        </div>
-        <button onclick="closePwaModal()" class="p-1.5 rounded-xl text-slate-400 hover:text-slate-200">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <button
-        id="nativeInstallTriggerBtn"
-        onclick="triggerNativePrompt()"
-        class="hidden w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-extrabold text-sm shadow-lg flex items-center justify-center gap-2"
-      >
-        <i data-lucide="download-cloud" class="w-4 h-4"></i>
-        <span>Install App Now</span>
-      </button>
-
-      <div class="space-y-2 text-xs bg-slate-50 dark:bg-slate-800/60 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800">
-        <p><strong id="uiPwaStep1Title">Android (Chrome):</strong> <span id="uiPwaStep1Desc">Tap menu (⋮) and choose "Install app" or "Add to Home screen".</span></p>
-        <p><strong id="uiPwaStep2Title">iPhone (Safari):</strong> <span id="uiPwaStep2Desc">Tap Share and choose "Add to Home Screen".</span></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================= -->
-  <!-- MODAL 5: CLEAR ALL DATA                                   -->
+  <!-- MODAL 4: CLEAR ALL DATA                                   -->
   <!-- ========================================================= -->
   <div id="clearDataModal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
@@ -628,10 +595,10 @@
         This action permanently removes all products and historical entries from this device. Please export a CSV backup first.
       </p>
       <div class="flex items-center justify-end gap-2.5 pt-2">
-        <button onclick="closeClearDataModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+        <button type="button" onclick="closeClearDataModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
           Cancel
         </button>
-        <button onclick="confirmClearData()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white">
+        <button type="button" onclick="confirmClearData()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white">
           Yes, Delete Everything
         </button>
       </div>
@@ -644,10 +611,7 @@
   <script>
     const I18N = {
       en: {
-        appTitle: "StockTracker v2.1",
-        appSubtitle: "Auto-Save • Rollover Engine",
-        freeBadge: "FREE",
-        installApp: "Install",
+        appTitle: "StockTracker",
         tabAll: "ALL",
         tabDaily: "Daily Sales",
         tabReport: "Report",
@@ -715,21 +679,12 @@
         deleteProdTitle: "Remove Product?",
         deleteProdBody: "Are you sure you want to remove this product from your tracker?",
         confirmRemoveBtn: "Remove",
-        pwaModalTitle: "Install StockTracker",
-        pwaModalSub: "Works offline on mobile and desktop",
-        pwaStep1Title: "Android (Chrome):",
-        pwaStep1Desc: "Tap menu (⋮) and choose 'Install app' or 'Add to Home screen'.",
-        pwaStep2Title: "iPhone (Safari):",
-        pwaStep2Desc: "Tap Share and choose 'Add to Home Screen'.",
         emptyAllHeading: "No Products Added Yet",
         emptyAllDesc: "Get started by adding your first product or importing a CSV file.",
         emptyDailyDesc: "No products in your list. Tap '➕ Add Product' to start tracking daily sales."
       },
       am: {
-        appTitle: "የክምችት መቆጣጠሪያ v2.1",
-        appSubtitle: "አውቶማቲክ ምዝገባ • ቀላል አጠቃቀም",
-        freeBadge: "ነፃ",
-        installApp: "ጫን",
+        appTitle: "የክምችት መቆጣጠሪያ",
         tabAll: "ሁሉም (ALL)",
         tabDaily: "የዕለት ሽያጭ",
         tabReport: "ሪፖርት",
@@ -797,14 +752,8 @@
         deleteProdTitle: "ምርቱ ይሰረዝ?",
         deleteProdBody: "ይህን ምርት ከመዝገብዎ ላይ መሰረዝ ይፈልጋሉ?",
         confirmRemoveBtn: "አዎ ሰርዝ",
-        pwaModalTitle: "መተግበሪያውን በስልክዎ ይጫኑ",
-        pwaModalSub: "ያለ ኢንተርኔት በስልክ እና ኮምፒውተር ላይ ይሰራል",
-        pwaStep1Title: "አንድሮይድ (Chrome)፦",
-        pwaStep1Desc: "የላይኛውን ሜኑ (⋮) ነክተው 'Install app' ወይም 'Add to Home screen' ይምረጡ።",
-        pwaStep2Title: "አይፎን (Safari)፦",
-        pwaStep2Desc: "Share ምልክቱን ነክተው 'Add to Home Screen' ይምረጡ።",
         emptyAllHeading: "ምንም የተመዘገበ ምርት የለም",
-        emptyAllDesc: "የመጀመሪያውን ምርት በማስገባት ወይም የCSV ፋይል በማስገባት ይጀምሩ።",
+        emptyAllDesc: "የመጀመሪያውን ምርት በማስገባት ወይም የCSV ፋይል በማስገባት ይጀምሩ.",
         emptyDailyDesc: "ምንም ምርት አልተገኘም። በየዕለቱ ለመመዝገብ '➕ አዲስ ምርት ጨምር' የሚለውን ይጫኑ።"
       }
     };
@@ -812,9 +761,22 @@
     const STORAGE_KEY = 'demaq_stock_tracker_v2_clean';
     let pendingDeleteProductId = null;
 
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el && value !== undefined) el.textContent = value;
+    }
+
+    function setPlaceholder(id, value) {
+      const el = document.getElementById(id);
+      if (el && value !== undefined) el.placeholder = value;
+    }
+
     function getTodayString() {
       const now = new Date();
-      return now.toISOString().slice(0, 10);
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, '0');
+      const d = String(now.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
     }
 
     let appState = {
@@ -853,6 +815,12 @@
           const parsed = JSON.parse(raw);
           if (parsed && Array.isArray(parsed.products)) {
             appState = { ...appState, ...parsed };
+            if (!Array.isArray(appState.dates) || appState.dates.length === 0) {
+              appState.dates = [getTodayString()];
+            }
+            if (!appState.selectedDate) {
+              appState.selectedDate = getTodayString();
+            }
             if (!appState.dates.includes(appState.selectedDate)) {
               appState.dates.push(appState.selectedDate);
               appState.dates.sort();
@@ -931,92 +899,83 @@
     }
 
     function applyStaticTranslations() {
-      document.getElementById('uiAppTitle').textContent = t('appTitle');
-      document.getElementById('uiAppSubtitle').textContent = t('appSubtitle');
-      document.getElementById('uiFreeBadge').textContent = t('freeBadge');
-      document.getElementById('uiInstallBtnText').textContent = t('installApp');
-
-      document.getElementById('uiTabAll').textContent = t('tabAll');
-      document.getElementById('uiTabDaily').textContent = t('tabDaily');
-      document.getElementById('uiTabReport').textContent = t('tabReport');
+      setText('uiAppTitle', t('appTitle'));
+      setText('uiTabAll', t('tabAll'));
+      setText('uiTabDaily', t('tabDaily'));
+      setText('uiTabReport', t('tabReport'));
 
       const enEl = document.getElementById('langIndicatorEN');
       const amEl = document.getElementById('langIndicatorAM');
-      if (appState.lang === 'am') {
-        amEl.className = "px-1.5 py-0.5 rounded text-[10px] bg-amber-500 text-slate-950 font-extrabold";
-        enEl.className = "px-1 py-0.5 rounded text-[10px] text-slate-500 dark:text-slate-400";
-      } else {
-        enEl.className = "px-1.5 py-0.5 rounded text-[10px] bg-amber-500 text-slate-950 font-extrabold";
-        amEl.className = "px-1 py-0.5 rounded text-[10px] text-slate-500 dark:text-slate-400";
+      if (enEl && amEl) {
+        if (appState.lang === 'am') {
+          amEl.className = "px-1.5 py-0.5 rounded text-[10px] bg-amber-500 text-slate-950 font-extrabold";
+          enEl.className = "px-1 py-0.5 rounded text-[10px] text-slate-500 dark:text-slate-400";
+        } else {
+          enEl.className = "px-1.5 py-0.5 rounded text-[10px] bg-amber-500 text-slate-950 font-extrabold";
+          amEl.className = "px-1 py-0.5 rounded text-[10px] text-slate-500 dark:text-slate-400";
+        }
       }
 
-      document.getElementById('uiAllTotalItemsLabel').textContent = t('allTotalItemsLabel');
-      document.getElementById('uiAllTotalStockLabel').textContent = t('allTotalStockLabel');
-      document.getElementById('uiAllLowStockLabel').textContent = t('allLowStockLabel');
-      document.getElementById('allSearchInput').placeholder = t('allSearchPlaceholder');
+      setText('uiAllTotalItemsLabel', t('allTotalItemsLabel'));
+      setText('uiAllTotalStockLabel', t('allTotalStockLabel'));
+      setText('uiAllLowStockLabel', t('allLowStockLabel'));
+      setPlaceholder('allSearchInput', t('allSearchPlaceholder'));
 
-      document.getElementById('uiTodayBtn').textContent = t('todayBtn');
-      document.getElementById('uiKpiOpeningTitle').textContent = t('openShort');
-      document.getElementById('uiKpiRestockTitle').textContent = t('restockShort');
-      document.getElementById('uiKpiSalesTitle').textContent = t('soldShort');
-      document.getElementById('uiKpiClosingTitle').textContent = t('leftShort');
-      document.getElementById('uiOpenAddProdBtn').textContent = t('openAddProdBtn');
-      document.getElementById('productSearchInput').placeholder = t('searchPlaceholder');
+      setText('uiTodayBtn', t('todayBtn'));
+      setText('uiKpiOpeningTitle', t('openShort'));
+      setText('uiKpiRestockTitle', t('restockShort'));
+      setText('uiKpiSalesTitle', t('soldShort'));
+      setText('uiKpiClosingTitle', t('leftShort'));
+      setText('uiOpenAddProdBtn', t('openAddProdBtn'));
+      setPlaceholder('productSearchInput', t('searchPlaceholder'));
 
-      document.querySelector('#uiReportTitle span').textContent = t('reportTitle');
-      document.getElementById('uiExportReportBtn').textContent = t('exportReportBtn');
-      document.getElementById('uiImportBtnText').textContent = t('importBtnText');
-      document.getElementById('rep-mode-daily').textContent = t('repDaily');
-      document.getElementById('rep-mode-weekly').textContent = t('repWeekly');
-      document.getElementById('rep-mode-monthly').textContent = t('repMonthly');
-      document.getElementById('rep-mode-annually').textContent = t('repAnnually');
-      document.getElementById('rep-mode-custom').textContent = t('repCustom');
+      setText('uiReportTitle', t('reportTitle'));
+      setText('uiExportReportBtn', t('exportReportBtn'));
+      setText('uiImportBtnText', t('importBtnText'));
+      setText('rep-mode-daily', t('repDaily'));
+      setText('rep-mode-weekly', t('repWeekly'));
+      setText('rep-mode-monthly', t('repMonthly'));
+      setText('rep-mode-annually', t('repAnnually'));
+      setText('rep-mode-custom', t('repCustom'));
 
-      document.getElementById('uiRepStartLabel').textContent = t('repStartLabel');
-      document.getElementById('uiRepRestockLabel').textContent = t('repRestockLabel');
-      document.getElementById('uiRepSoldLabel').textContent = t('repSoldLabel');
-      document.getElementById('uiRepEndLabel').textContent = t('repEndLabel');
-      document.getElementById('uiStorageStatus').textContent = t('storageStatus');
-      document.getElementById('uiClearBtnLabel').textContent = t('clearBtnLabel');
+      setText('uiRepStartLabel', t('repStartLabel'));
+      setText('uiRepRestockLabel', t('repRestockLabel'));
+      setText('uiRepSoldLabel', t('repSoldLabel'));
+      setText('uiRepEndLabel', t('repEndLabel'));
+      setText('uiStorageStatus', t('storageStatus'));
+      setText('uiClearBtnLabel', t('clearBtnLabel'));
 
-      document.getElementById('uiRepBreakdownHeading').textContent = t('repBreakdownHeading');
-      document.getElementById('uiRepThProduct').textContent = t('repThProduct');
-      document.getElementById('uiRepThOpen').textContent = t('repThOpen');
-      document.getElementById('uiRepThRestock').textContent = t('repThRestock');
-      document.getElementById('uiRepThSold').textContent = t('repThSold');
-      document.getElementById('uiRepThEnd').textContent = t('repThEnd');
+      setText('uiRepBreakdownHeading', t('repBreakdownHeading'));
+      setText('uiRepThProduct', t('repThProduct'));
+      setText('uiRepThOpen', t('repThOpen'));
+      setText('uiRepThRestock', t('repThRestock'));
+      setText('uiRepThSold', t('repThSold'));
+      setText('uiRepThEnd', t('repThEnd'));
 
-      document.getElementById('uiUpgradePillText').textContent = t('upgradePillText');
-      document.getElementById('uiComingSoonBadge').textContent = t('comingSoonBadge');
-      document.getElementById('uiUpgradeModalTitle').textContent = t('upgradeModalTitle');
-      document.getElementById('uiUpgradeModalSub').textContent = t('upgradeModalSub');
-      document.getElementById('uiUpgradeFeatIntro').textContent = t('upgradeFeatIntro');
-      document.getElementById('uiUpgradeFeat1').textContent = t('upgradeFeat1');
-      document.getElementById('uiUpgradeFeat2').textContent = t('upgradeFeat2');
-      document.getElementById('uiUpgradeFeat3').textContent = t('upgradeFeat3');
-      document.getElementById('uiUpgradeFeat4').textContent = t('upgradeFeat4');
-      document.getElementById('uiUpgradeCloseBtn').textContent = t('upgradeCloseBtn');
+      setText('uiUpgradePillText', t('upgradePillText'));
+      setText('uiComingSoonBadge', t('comingSoonBadge'));
+      setText('uiUpgradeModalTitle', t('upgradeModalTitle'));
+      setText('uiUpgradeModalSub', t('upgradeModalSub'));
+      setText('uiUpgradeFeatIntro', t('upgradeFeatIntro'));
+      setText('uiUpgradeFeat1', t('upgradeFeat1'));
+      setText('uiUpgradeFeat2', t('upgradeFeat2'));
+      setText('uiUpgradeFeat3', t('upgradeFeat3'));
+      setText('uiUpgradeFeat4', t('upgradeFeat4'));
+      setText('uiUpgradeCloseBtn', t('upgradeCloseBtn'));
 
-      document.getElementById('uiAddProdHeading').textContent = t('addProdHeading');
-      document.getElementById('uiAddProdSub').textContent = t('addProdSub');
-      document.getElementById('uiLabelProdNameEn').textContent = t('labelProdNameEn');
-      document.getElementById('uiLabelProdNameAm').textContent = t('labelProdNameAm');
-      document.getElementById('uiLabelCategory').textContent = t('labelCategory');
-      document.getElementById('uiLabelInitStock').textContent = t('labelInitStock');
-      document.getElementById('uiAddProdCancelBtn').textContent = t('cancelBtn');
-      document.getElementById('uiAddProdSubmitBtn').textContent = t('saveProdBtn');
+      setText('uiAddProdHeading', t('addProdHeading'));
+      setText('uiAddProdSub', t('addProdSub'));
+      setText('uiLabelProdNameEn', t('labelProdNameEn'));
+      setText('uiLabelProdNameAm', t('labelProdNameAm'));
+      setText('uiLabelCategory', t('labelCategory'));
+      setText('uiLabelInitStock', t('labelInitStock'));
+      setText('uiAddProdCancelBtn', t('cancelBtn'));
+      setText('uiAddProdSubmitBtn', t('saveProdBtn'));
 
-      document.getElementById('uiDeleteProdTitle').textContent = t('deleteProdTitle');
-      document.getElementById('uiDeleteProdBody').textContent = t('deleteProdBody');
-      document.getElementById('uiDeleteCancelBtn').textContent = t('cancelBtn');
-      document.getElementById('uiDeleteConfirmBtn').textContent = t('confirmRemoveBtn');
-
-      document.getElementById('uiPwaModalTitle').textContent = t('pwaModalTitle');
-      document.getElementById('uiPwaModalSub').textContent = t('pwaModalSub');
-      document.getElementById('uiPwaStep1Title').textContent = t('pwaStep1Title');
-      document.getElementById('uiPwaStep1Desc').textContent = t('pwaStep1Desc');
-      document.getElementById('uiPwaStep2Title').textContent = t('pwaStep2Title');
-      document.getElementById('uiPwaStep2Desc').textContent = t('pwaStep2Desc');
+      setText('uiDeleteProdTitle', t('deleteProdTitle'));
+      setText('uiDeleteProdBody', t('deleteProdBody'));
+      setText('uiDeleteCancelBtn', t('cancelBtn'));
+      setText('uiDeleteConfirmBtn', t('confirmRemoveBtn'));
     }
 
     function renderAll() {
@@ -1026,6 +985,7 @@
       ['all', 'daily', 'report'].forEach(tabKey => {
         const btn = document.getElementById(`tab-${tabKey}`);
         const view = document.getElementById(`view-${tabKey}`);
+        if (!btn || !view) return;
         if (appState.activeTab === tabKey) {
           btn.className = "py-2.5 px-3 rounded-2xl font-extrabold text-xs sm:text-sm border-2 transition-all flex items-center justify-center gap-1.5 bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20";
           view.classList.remove('hidden');
@@ -1039,7 +999,9 @@
       renderDailyTab(ledger);
       renderReportTab(ledger);
 
-      if (window.lucide) lucide.createIcons();
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
     }
 
     function renderAllTab(passedLedger) {
@@ -1055,9 +1017,9 @@
         if (st <= 2) lowCount++;
       });
 
-      document.getElementById('allTotalItemsVal').textContent = appState.products.length;
-      document.getElementById('allTotalStockVal').textContent = formatNum(latestData.totals.closing);
-      document.getElementById('allLowStockVal').textContent = lowCount;
+      setText('allTotalItemsVal', appState.products.length);
+      setText('allTotalStockVal', formatNum(latestData.totals.closing));
+      setText('allLowStockVal', lowCount);
 
       const datalistEl = document.getElementById('categorySuggestions');
       if (datalistEl) {
@@ -1066,22 +1028,26 @@
       }
 
       const pillsEl = document.getElementById('allCategoryPills');
-      pillsEl.innerHTML = Array.from(categoriesSet).map(cat => {
-        const active = appState.allCatFilter === cat;
-        const label = cat === "ALL" ? t('filterAll') : cat;
-        return `
-          <button
-            onclick="setAllCatFilter('${escapeHtml(cat)}')"
-            class="px-3 py-1 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
-              active
-                ? 'bg-amber-500 text-slate-950 font-extrabold shadow-sm'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
-            }"
-          >${escapeHtml(label)}</button>
-        `;
-      }).join('');
+      if (pillsEl) {
+        pillsEl.innerHTML = Array.from(categoriesSet).map(cat => {
+          const active = appState.allCatFilter === cat;
+          const label = cat === "ALL" ? t('filterAll') : cat;
+          return `
+            <button
+              type="button"
+              onclick="setAllCatFilter('${escapeHtml(cat)}')"
+              class="px-3 py-1 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+                active
+                  ? 'bg-amber-500 text-slate-950 font-extrabold shadow-sm'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+              }"
+            >${escapeHtml(label)}</button>
+          `;
+        }).join('');
+      }
 
       const listEl = document.getElementById('allStockList');
+      if (!listEl) return;
       listEl.innerHTML = '';
 
       if (appState.products.length === 0) {
@@ -1092,7 +1058,7 @@
             </div>
             <h4 class="font-extrabold text-sm sm:text-base text-slate-800 dark:text-slate-100">${escapeHtml(t('emptyAllHeading'))}</h4>
             <p class="text-xs text-slate-500 max-w-sm mx-auto">${escapeHtml(t('emptyAllDesc'))}</p>
-            <button onclick="openAddProductModal()" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all">
+            <button type="button" onclick="openAddProductModal()" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all">
               ${escapeHtml(t('openAddProdBtn'))}
             </button>
           </div>
@@ -1167,19 +1133,17 @@
         totals: { opening: 0, restock: 0, sales: 0, closing: 0 }
       };
 
-      document.getElementById('kpiOpening').textContent = formatNum(dayData.totals.opening);
-      document.getElementById('kpiRestock').textContent = dayData.totals.restock > 0 ? `+${formatNum(dayData.totals.restock)}` : formatNum(dayData.totals.restock);
-      document.getElementById('kpiSales').textContent = formatNum(dayData.totals.sales);
-      document.getElementById('kpiClosing').textContent = formatNum(dayData.totals.closing);
+      setText('kpiOpening', formatNum(dayData.totals.opening));
+      setText('kpiRestock', dayData.totals.restock > 0 ? `+${formatNum(dayData.totals.restock)}` : formatNum(dayData.totals.restock));
+      setText('kpiSales', formatNum(dayData.totals.sales));
+      setText('kpiClosing', formatNum(dayData.totals.closing));
 
       const restockBtn = document.getElementById('restockModeBtn');
-      const restockLabel = document.getElementById('uiRestockModeLabel');
-      if (appState.restockMode) {
-        restockLabel.textContent = t('restockModeOn');
-        restockBtn.className = "flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-extrabold border bg-amber-500 text-slate-950 border-amber-400 shadow-sm transition-all";
-      } else {
-        restockLabel.textContent = t('restockModeOff');
-        restockBtn.className = "flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 transition-all";
+      setText('uiRestockModeLabel', appState.restockMode ? t('restockModeOn') : t('restockModeOff'));
+      if (restockBtn) {
+        restockBtn.className = appState.restockMode
+          ? "flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-extrabold border bg-amber-500 text-slate-950 border-amber-400 shadow-sm transition-all"
+          : "flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 transition-all";
       }
 
       let soldCount = 0, lowCount = 0;
@@ -1200,11 +1164,9 @@
         const el = document.getElementById(`filter-${f.id}`);
         if (!el) return;
         el.textContent = f.label;
-        if (appState.dailyFilter === f.id) {
-          el.className = "px-3 py-1.5 rounded-xl text-xs font-extrabold transition-all whitespace-nowrap bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 shadow-sm";
-        } else {
-          el.className = "px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300";
-        }
+        el.className = appState.dailyFilter === f.id
+          ? "px-3 py-1.5 rounded-xl text-xs font-extrabold transition-all whitespace-nowrap bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 shadow-sm"
+          : "px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300";
       });
 
       renderDailyInventory(ledger);
@@ -1214,6 +1176,7 @@
       const ledger = passedLedger || computeLedger();
       const dayData = ledger[appState.selectedDate] || { items: {} };
       const cardsContainer = document.getElementById('counterCardsContainer');
+      if (!cardsContainer) return;
       cardsContainer.innerHTML = '';
 
       if (appState.products.length === 0) {
@@ -1223,7 +1186,7 @@
               <i data-lucide="wine" class="w-6 h-6"></i>
             </div>
             <p class="text-xs text-slate-500 max-w-sm mx-auto">${escapeHtml(t('emptyDailyDesc'))}</p>
-            <button onclick="openAddProductModal()" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all">
+            <button type="button" onclick="openAddProductModal()" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm transition-all">
               ${escapeHtml(t('openAddProdBtn'))}
             </button>
           </div>
@@ -1232,7 +1195,7 @@
       }
 
       const query = (document.getElementById('productSearchInput')?.value || '').trim().toLowerCase();
-      document.getElementById('clearSearchBtn').classList.toggle('hidden', !query);
+      document.getElementById('clearSearchBtn')?.classList.toggle('hidden', !query);
 
       let visible = 0;
       appState.products.forEach((p, idx) => {
@@ -1410,68 +1373,67 @@
 
       ['daily', 'weekly', 'monthly', 'annually', 'custom'].forEach(m => {
         const btn = document.getElementById(`rep-mode-${m}`);
-        if (appState.reportMode === m) {
-          btn.className = "py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate bg-amber-500 text-slate-950 shadow-sm";
-        } else {
-          btn.className = "py-2 px-1 rounded-lg text-[11px] sm:text-xs font-bold text-center transition-all truncate text-slate-600 dark:text-slate-300";
-        }
+        if (!btn) return;
+        btn.className = appState.reportMode === m
+          ? "py-2 px-1 rounded-lg text-[11px] sm:text-xs font-extrabold text-center transition-all truncate bg-amber-500 text-slate-950 shadow-sm"
+          : "py-2 px-1 rounded-lg text-[11px] sm:text-xs font-bold text-center transition-all truncate text-slate-600 dark:text-slate-300";
       });
 
       const subEl = document.getElementById('reportSubControls');
-      if (appState.reportMode === 'daily') {
-        subEl.innerHTML = `
-          <input type="date" value="${appState.reportDailyDate}" onchange="setReportDailyDate(this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold" />
-        `;
-      } else if (appState.reportMode === 'weekly') {
-        const weeks = [];
-        for (let i = 0; i < allDates.length; i += 7) {
-          const slice = allDates.slice(i, i + 7);
-          weeks.push({ idx: weeks.length, start: slice[0], end: slice[slice.length - 1] });
+      if (subEl) {
+        if (appState.reportMode === 'daily') {
+          subEl.innerHTML = `<input type="date" value="${appState.reportDailyDate}" onchange="setReportDailyDate(this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold" />`;
+        } else if (appState.reportMode === 'weekly') {
+          const weeks = [];
+          for (let i = 0; i < allDates.length; i += 7) {
+            const slice = allDates.slice(i, i + 7);
+            weeks.push({ idx: weeks.length, start: slice[0], end: slice[slice.length - 1] });
+          }
+          subEl.innerHTML = `
+            <select onchange="setReportWeek(this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold">
+              ${weeks.map(w => `<option value="${w.idx}" ${w.idx === appState.reportWeekIndex ? 'selected' : ''}>Week ${w.idx + 1}: ${formatDisplayDate(w.start)} – ${formatDisplayDate(w.end)}</option>`).join('')}
+            </select>
+          `;
+        } else if (appState.reportMode === 'monthly') {
+          const months = Array.from(new Set(allDates.map(d => d.slice(0, 7))));
+          subEl.innerHTML = `
+            <div class="flex gap-2 flex-wrap">
+              ${months.map(m => `
+                <button type="button" onclick="setReportMonth('${m}')" class="px-3 py-1.5 rounded-xl text-xs font-extrabold border ${
+                  appState.reportMonth === m
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-transparent'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
+                }">${m}</button>
+              `).join('')}
+            </div>
+          `;
+        } else if (appState.reportMode === 'annually') {
+          const years = Array.from(new Set(allDates.map(d => d.slice(0, 4))));
+          subEl.innerHTML = `
+            <div class="flex gap-2 flex-wrap">
+              ${years.map(y => `
+                <button type="button" onclick="setReportYear('${y}')" class="px-3 py-1.5 rounded-xl text-xs font-extrabold border ${
+                  appState.reportYear === y
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-transparent'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
+                }">${y}</button>
+              `).join('')}
+            </div>
+          `;
+        } else {
+          subEl.innerHTML = `
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[10px] font-bold uppercase text-slate-400 block mb-0.5">${escapeHtml(t('fromDateLabel'))}</label>
+                <input type="date" value="${appState.reportCustomFrom}" onchange="setCustomRange('from', this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 text-xs font-bold" />
+              </div>
+              <div>
+                <label class="text-[10px] font-bold uppercase text-slate-400 block mb-0.5">${escapeHtml(t('toDateLabel'))}</label>
+                <input type="date" value="${appState.reportCustomTo}" onchange="setCustomRange('to', this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 text-xs font-bold" />
+              </div>
+            </div>
+          `;
         }
-        subEl.innerHTML = `
-          <select onchange="setReportWeek(this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold">
-            ${weeks.map(w => `<option value="${w.idx}" ${w.idx === appState.reportWeekIndex ? 'selected' : ''}>Week ${w.idx + 1}: ${formatDisplayDate(w.start)} – ${formatDisplayDate(w.end)}</option>`).join('')}
-          </select>
-        `;
-      } else if (appState.reportMode === 'monthly') {
-        const months = Array.from(new Set(allDates.map(d => d.slice(0, 7))));
-        subEl.innerHTML = `
-          <div class="flex gap-2 flex-wrap">
-            ${months.map(m => `
-              <button onclick="setReportMonth('${m}')" class="px-3 py-1.5 rounded-xl text-xs font-extrabold border ${
-                appState.reportMonth === m
-                  ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-transparent'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
-              }">${m}</button>
-            `).join('')}
-          </div>
-        `;
-      } else if (appState.reportMode === 'annually') {
-        const years = Array.from(new Set(allDates.map(d => d.slice(0, 4))));
-        subEl.innerHTML = `
-          <div class="flex gap-2 flex-wrap">
-            ${years.map(y => `
-              <button onclick="setReportYear('${y}')" class="px-3 py-1.5 rounded-xl text-xs font-extrabold border ${
-                appState.reportYear === y
-                  ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-transparent'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
-              }">${y}</button>
-            `).join('')}
-          </div>
-        `;
-      } else {
-        subEl.innerHTML = `
-          <div class="grid grid-cols-2 gap-2">
-            <div>
-              <label class="text-[10px] font-bold uppercase text-slate-400 block mb-0.5">${escapeHtml(t('fromDateLabel'))}</label>
-              <input type="date" value="${appState.reportCustomFrom}" onchange="setCustomRange('from', this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 text-xs font-bold" />
-            </div>
-            <div>
-              <label class="text-[10px] font-bold uppercase text-slate-400 block mb-0.5">${escapeHtml(t('toDateLabel'))}</label>
-              <input type="date" value="${appState.reportCustomTo}" onchange="setCustomRange('to', this.value)" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 text-xs font-bold" />
-            </div>
-          </div>
-        `;
       }
 
       const windowDates = getReportWindowDates();
@@ -1505,54 +1467,56 @@
         });
       });
 
-      document.getElementById('repStartVal').textContent = formatNum(startStock);
-      document.getElementById('repRestockVal').textContent = totalRestock > 0 ? `+${formatNum(totalRestock)}` : formatNum(totalRestock);
-      document.getElementById('repSoldVal').textContent = formatNum(totalSold);
-      document.getElementById('repEndVal').textContent = formatNum(endStock);
+      setText('repStartVal', formatNum(startStock));
+      setText('repRestockVal', totalRestock > 0 ? `+${formatNum(totalRestock)}` : formatNum(totalRestock));
+      setText('repSoldVal', formatNum(totalSold));
+      setText('repEndVal', formatNum(endStock));
 
-      document.getElementById('repDateRangeSubtitle').textContent = firstDate === lastDate
+      setText('repDateRangeSubtitle', firstDate === lastDate
         ? formatDisplayDate(firstDate)
-        : `${formatDisplayDate(firstDate)} – ${formatDisplayDate(lastDate)}`;
+        : `${formatDisplayDate(firstDate)} – ${formatDisplayDate(lastDate)}`);
 
       const rowsList = Object.values(prodStats).sort((a, b) => b.sold - a.sold);
       const tbody = document.getElementById('reportTableBody');
-      tbody.innerHTML = rowsList.map(item => `
-        <tr class="${item.sold > 0 ? 'bg-amber-500/[0.06]' : ''}">
-          <td class="py-2.5 px-3 font-sans font-bold text-slate-900 dark:text-white">
-            ${escapeHtml(getProductDisplayName(item.product))}
-            <span class="block text-[10px] font-normal text-slate-400">${escapeHtml(item.product.category || '')}</span>
-          </td>
-          <td class="py-2.5 px-2.5 text-right text-slate-500">${formatNum(item.opening)}</td>
-          <td class="py-2.5 px-2.5 text-right ${item.restock !== 0 ? 'text-emerald-500 font-bold' : 'text-slate-400'}">
-            ${item.restock > 0 ? '+' + formatNum(item.restock) : formatNum(item.restock)}
-          </td>
-          <td class="py-2.5 px-2.5 text-right ${item.sold > 0 ? 'text-amber-500 font-extrabold' : 'text-slate-400'}">
-            ${formatNum(item.sold)}
-          </td>
-          <td class="py-2.5 px-3 text-right font-extrabold text-sky-500">
-            ${formatNum(item.closing)}
-          </td>
-        </tr>
-      `).join('');
+      if (tbody) {
+        tbody.innerHTML = rowsList.map(item => `
+          <tr class="${item.sold > 0 ? 'bg-amber-500/[0.06]' : ''}">
+            <td class="py-2.5 px-3 font-sans font-bold text-slate-900 dark:text-white">
+              ${escapeHtml(getProductDisplayName(item.product))}
+              <span class="block text-[10px] font-normal text-slate-400">${escapeHtml(item.product.category || '')}</span>
+            </td>
+            <td class="py-2.5 px-2.5 text-right text-slate-500">${formatNum(item.opening)}</td>
+            <td class="py-2.5 px-2.5 text-right ${item.restock !== 0 ? 'text-emerald-500 font-bold' : 'text-slate-400'}">
+              ${item.restock > 0 ? '+' + formatNum(item.restock) : formatNum(item.restock)}
+            </td>
+            <td class="py-2.5 px-2.5 text-right ${item.sold > 0 ? 'text-amber-500 font-extrabold' : 'text-slate-400'}">
+              ${formatNum(item.sold)}
+            </td>
+            <td class="py-2.5 px-3 text-right font-extrabold text-sky-500">
+              ${formatNum(item.closing)}
+            </td>
+          </tr>
+        `).join('');
+      }
     }
 
-    function setReportMode(m) { appState.reportMode = m; saveState(); renderReportTab(); }
-    function setReportDailyDate(d) { appState.reportDailyDate = d; saveState(); renderReportTab(); }
-    function setReportWeek(idx) { appState.reportWeekIndex = parseInt(idx, 10) || 0; saveState(); renderReportTab(); }
-    function setReportMonth(m) { appState.reportMonth = m; saveState(); renderReportTab(); }
-    function setReportYear(y) { appState.reportYear = y; saveState(); renderReportTab(); }
+    function setReportMode(m) { appState.reportMode = m; saveState(); renderAll(); }
+    function setReportDailyDate(d) { appState.reportDailyDate = d; saveState(); renderAll(); }
+    function setReportWeek(idx) { appState.reportWeekIndex = parseInt(idx, 10) || 0; saveState(); renderAll(); }
+    function setReportMonth(m) { appState.reportMonth = m; saveState(); renderAll(); }
+    function setReportYear(y) { appState.reportYear = y; saveState(); renderAll(); }
     function setCustomRange(side, val) {
       if (side === 'from') appState.reportCustomFrom = val;
       if (side === 'to') appState.reportCustomTo = val;
       saveState();
-      renderReportTab();
+      renderAll();
     }
 
     function openAddProductModal() {
-      document.getElementById('addProductModal').classList.remove('hidden');
+      document.getElementById('addProductModal')?.classList.remove('hidden');
       setTimeout(() => document.getElementById('newProdName')?.focus(), 50);
     }
-    function closeAddProductModal() { document.getElementById('addProductModal').classList.add('hidden'); }
+    function closeAddProductModal() { document.getElementById('addProductModal')?.classList.add('hidden'); }
 
     function handleAddNewProduct(e) {
       e.preventDefault();
@@ -1578,19 +1542,19 @@
       closeAddProductModal();
       saveState();
       renderAll();
-      showToast(`Added ${name}`);
+      showToast(appState.lang === 'am' ? `${nameAm} ተጨምሯል` : `Added ${name}`);
     }
 
     function promptDeleteProduct(id) {
       const prod = appState.products.find(p => p.id === id);
       if (!prod) return;
       pendingDeleteProductId = id;
-      document.getElementById('deleteProdTargetName').textContent = getProductDisplayName(prod);
-      document.getElementById('deleteProductModal').classList.remove('hidden');
+      setText('deleteProdTargetName', getProductDisplayName(prod));
+      document.getElementById('deleteProductModal')?.classList.remove('hidden');
     }
     function closeDeleteProductModal() {
       pendingDeleteProductId = null;
-      document.getElementById('deleteProductModal').classList.add('hidden');
+      document.getElementById('deleteProductModal')?.classList.add('hidden');
     }
     function confirmDeleteProduct() {
       if (!pendingDeleteProductId) return;
@@ -1599,20 +1563,21 @@
       closeDeleteProductModal();
       saveState();
       renderAll();
-      showToast("Product removed");
+      showToast(appState.lang === 'am' ? "ምርቱ ተሰርዟል" : "Product removed");
     }
 
     function openUpgradeModal() {
       showToast(t('comingSoonToast'));
-      document.getElementById('upgradeModal').classList.remove('hidden');
+      document.getElementById('upgradeModal')?.classList.remove('hidden');
     }
-    function closeUpgradeModal() { document.getElementById('upgradeModal').classList.add('hidden'); }
+    function closeUpgradeModal() { document.getElementById('upgradeModal')?.classList.add('hidden'); }
 
     function toggleLanguage() {
       appState.lang = appState.lang === 'en' ? 'am' : 'en';
       document.documentElement.lang = appState.lang;
       saveState();
       renderAll();
+      showToast(appState.lang === 'am' ? "ቋንቋ ወደ አማርኛ ተቀይሯል" : "Switched to English");
     }
 
     function switchTab(tab) {
@@ -1625,7 +1590,7 @@
     function toggleRestockMode() {
       appState.restockMode = !appState.restockMode;
       saveState();
-      renderDailyInventory();
+      renderAll();
     }
 
     function clearSearch() {
@@ -1646,8 +1611,8 @@
     }
 
     function stepDate(delta) {
-      const current = new Date(appState.selectedDate);
-      current.setDate(current.getDate() + delta);
+      const [y, m, day] = appState.selectedDate.split('-').map(Number);
+      const current = new Date(Date.UTC(y, m - 1, day + delta));
       selectDate(current.toISOString().slice(0, 10));
     }
 
@@ -1726,13 +1691,13 @@
     }
 
     function handleCSVImport(event) {
-      const file = event.target.files[0];
+      const file = event.target.files?.[0];
       if (!file) return;
 
       const reader = new FileReader();
       reader.onload = (e) => {
         const text = e.target.result;
-        const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+        const lines = String(text || '').split(/\r?\n/).map(l => l.trim()).filter(Boolean);
         let importedCount = 0;
 
         lines.forEach((line, idx) => {
@@ -1742,7 +1707,7 @@
             const name = parts[0];
             const category = parts[1] || "General";
             const initialStock = parseFloat(parts[2]) || 0;
-            const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '_' + Date.now().toString().slice(-4) + Math.floor(Math.random()*100);
+            const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '_' + Date.now().toString().slice(-4) + Math.floor(Math.random() * 100);
 
             if (!appState.products.some(p => p.name.toLowerCase() === name.toLowerCase())) {
               appState.products.push({ id, name, nameAm: name, category, initialStock });
@@ -1754,13 +1719,13 @@
         event.target.value = '';
         saveState();
         renderAll();
-        showToast(`Imported ${importedCount} products!`);
+        showToast(`Imported ${importedCount} products`);
       };
       reader.readAsText(file);
     }
 
-    function openClearDataModal() { document.getElementById('clearDataModal').classList.remove('hidden'); }
-    function closeClearDataModal() { document.getElementById('clearDataModal').classList.add('hidden'); }
+    function openClearDataModal() { document.getElementById('clearDataModal')?.classList.remove('hidden'); }
+    function closeClearDataModal() { document.getElementById('clearDataModal')?.classList.add('hidden'); }
     function confirmClearData() {
       localStorage.removeItem(STORAGE_KEY);
       appState.products = [];
@@ -1782,15 +1747,7 @@
       saveState();
     }
 
-    let deferredInstallPrompt = null;
     function setupPWA() {
-      window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredInstallPrompt = e;
-        document.getElementById('nativeInstallTriggerBtn')?.classList.remove('hidden');
-        document.getElementById('pwaInstallBtnTop')?.classList.add('animate-pulse');
-      });
-
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js').catch(() => {});
@@ -1798,27 +1755,11 @@
       }
     }
 
-    function handleInstallClick() {
-      if (deferredInstallPrompt) {
-        triggerNativePrompt();
-      } else {
-        document.getElementById('pwaModal').classList.remove('hidden');
-      }
-    }
-
-    async function triggerNativePrompt() {
-      if (!deferredInstallPrompt) return;
-      deferredInstallPrompt.prompt();
-      await deferredInstallPrompt.userChoice;
-      deferredInstallPrompt = null;
-      closePwaModal();
-    }
-    function closePwaModal() { document.getElementById('pwaModal').classList.add('hidden'); }
-
     let toastTimer = null;
     function showToast(msg) {
       const banner = document.getElementById('toastBanner');
-      document.getElementById('toastMessage').textContent = msg;
+      if (!banner) return;
+      setText('toastMessage', msg);
       banner.classList.remove('hidden');
       if (toastTimer) clearTimeout(toastTimer);
       toastTimer = setTimeout(() => banner.classList.add('hidden'), 2600);
